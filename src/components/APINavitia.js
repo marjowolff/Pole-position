@@ -1,5 +1,5 @@
 import React from 'react'
-import Geolocalisation from './Geolocalisation'
+
 
 class Navitia extends React.Component {
 

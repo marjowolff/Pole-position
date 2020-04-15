@@ -1,12 +1,7 @@
 import React from 'react'
 import Navitia from './APINavitia.js'
 
-const callback = (position) => {
-    var lat = position.coords.latitude;
-    var lng = position.coords.longitude;
-    console.log( lat, lng );
-    // Do stuff
-}
+
 
 const erreur = ( error ) => {
     switch( error.code ) {
@@ -33,24 +28,22 @@ class Geolocalisation extends React.Component {
     }
 
 
-    
-
-    
-
     getGeolocalisation = () => {
-        // On vérifie que la méthode est implémenté dans le navigateur
-if ( navigator.geolocation ) {
-	// On demande d'envoyer la position courante à la fonction callback
-	navigator.geolocation.getCurrentPosition( callback, erreur );
-// } else {
-// 	// Function alternative sinon
-// 	alternative();
-// }
-    }}
+        function callback( position ) {
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+            console.log( lat, lng );
+            // Do stuff
+        }
+        if ( navigator.geolocation ) {
+            // On demande d'envoyer la position courante à la fonction callback
+            navigator.geolocation.getCurrentPosition( callback, erreur );
+        } 
+    }
 
     componentDidMount(){
-        this.getGeolocalisation()
         
+        this.getGeolocalisation()
     }
 
     render () {
