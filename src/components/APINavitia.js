@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from 'axios'
+import Geolocalisation from './Geolocalisation'
 
 class Navitia extends React.Component {
 
@@ -15,7 +15,7 @@ class Navitia extends React.Component {
     }
 
     getTransportationTime = () => {
-        const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${this.state.longitude};${this.state.latitude}&to=${this.state.longitudeArrivee};${this.state.latitudeArrivee}&key=${this.state.token}`
+        const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${this.props.longitude};${this.props.latitude}&to=${this.state.longitudeArrivee};${this.state.latitudeArrivee}&key=${this.state.token}`
         fetch(url)
             .then (res => res.json())
             .then (res => this.setState({transports : res, isloaded:true}))
@@ -38,6 +38,8 @@ class Navitia extends React.Component {
             {!this.state.isloaded ? <div>Loading ...</div> : (
             <h1>
                 Test Navitia
+                <p> Longitude : {this.state.longitude}</p>
+                <p> Latitude : {this.state.latitude}</p>
                 <div> Adresse de départ : {this.state.transports.journeys[0].sections[0].from.address.label}</div>
                 <div> Adresse d'arrivée : {this.state.transports.journeys[0].sections[this.state.transports.journeys[0].sections.length-1].to.address.label}</div>
                 <div> Temps de transport : {this.state.duration} minutes </div>

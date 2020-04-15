@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import Navitia from './components/APINavitia';
+import Geolocalisation from './components/Geolocalisation';
 
 function App() {
   return (
     <div>
-      <Navitia />
+      <Geolocalisation />
     </div>
   );
 }
