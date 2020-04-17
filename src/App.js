@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
+import BurgerMenu from './components/BurgerMenu' 
 import Geolocalisation from './components/Geolocalisation';
-import BurgerMenu from './components/BurgerMenu'
+
 function App() {
   return (
     <div>
-      <Geolocalisation />
       <BurgerMenu />
+      <Geolocalisation />
     </div>
   );
 }

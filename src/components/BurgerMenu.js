@@ -11,6 +11,7 @@ const Burger = () => {
 
             <div className={status}>
                 <nav>
+                    
                     <div className="Menu">
                         <div className="Burger" role="button" onClick={() => setStatus(status === 'open' ? 'close' : 'open')}>
                             <div className="Wrap"></div>
