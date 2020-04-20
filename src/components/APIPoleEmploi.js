@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from "axios"
+import SearchResults from './SearchResults'
 
 class APIPoleEmploi extends React.Component {
     constructor(props){
@@ -52,15 +53,16 @@ class APIPoleEmploi extends React.Component {
         return(
         <div>
             {this.state.jobOffers.map(offer => (
-                <div>
-                <p>{offer.intitule}</p>
+                <div key={offer.id}>
+                    <SearchResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise != undefined && offer.entreprise.nom} contractType={offer.typeContrat}/>
+                {/* <p>{offer.intitule}</p>
                 <p>{offer.entreprise != undefined && offer.entreprise.nom}</p>
                 <p>{offer.description}</p>
                 <p>{offer.lieuTravail.commune}</p>
                 <p>{offer.lieuTravail.libelle}</p>
                 <p>{offer.origineOffre.urlOrigine}</p>
                 <p>{offer.typeContrat}</p>
-                <p>{offer.origineOffre.partenaires.url}</p>
+                <p>{offer.origineOffre.partenaires.url}</p> */}
                 </div>
             ))}
             
