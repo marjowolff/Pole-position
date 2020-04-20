@@ -9,7 +9,7 @@ class APIPoleEmploi extends React.Component {
         token : "test",
         isToken : false,
         isLoaded: false,
-        jobKeyWord:"",
+        jobKeyWord:"communication",
         city:"",
         contractType:"",
     };
@@ -33,20 +33,32 @@ class APIPoleEmploi extends React.Component {
                 url: 'https://api.emploi-store.fr/partenaire/offresdemploi/v2/offres/search',
                 headers: {Authorization: `Bearer ${this.state.token}`},
                 params: {
-                    motsCles : "web",
+                    motsCles : this.state.jobKeyWord,
                     commune : 75118,
                     typeContrat :"CDI"
                      }
                    })
-                .then(res => this.setState({jobOffers: res.data.resultats, isLoaded :true}))
+                .then(res => this.setState({jobOffers: res.data.resultats}))
+                console.log("job")
            }
             
-
+    handleResearchParams=()=>{
+      this.setState({jobKeyWord:this.props.userKeyWord})
+       
+    }
         
     componentDidMount(){
         this.getTokenPE()
     }
-    
+
+   componentDidUpdate() {
+        if (this.props.userKeyWord !== this.state.jobKeyWord) {
+           this.handleResearchParams()
+          console.log("nouvelle props !");
+          this.getTokenPE()
+        }
+      }
+
     render(){
         
         return(
@@ -63,7 +75,7 @@ class APIPoleEmploi extends React.Component {
                 <p>{offer.origineOffre.partenaires.url}</p>
                 </div>
             ))}
-            
+            {console.log(`Le nouveau state : ${this.state.jobKeyWord}`)}
         </div>
         );
     }
