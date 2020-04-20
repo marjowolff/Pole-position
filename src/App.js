@@ -5,6 +5,7 @@ import APIPoleEmploi from './components/APIPoleEmploi';
 import Geolocalisation from './components/Geolocalisation';
 import RechercheJobDeReve from './components/RechercheJobDeReve';
 
+<<<<<<< HEAD
 
 class App extends React.Component {
   state = {
@@ -24,6 +25,17 @@ class App extends React.Component {
       </div>
     );
   }
+=======
+function App() {
+  return (
+    <div>
+      <BurgerMenu />
+      <Geolocalisation />
+      <APIPoleEmploi />
+      
+    </div>
+  );
+>>>>>>> dev
 }
 
 export default App;
