@@ -10,7 +10,7 @@ class APIPoleEmploi extends React.Component {
         token : "test",
         isToken : false,
         isLoaded: false,
-        jobKeyWord:"communication",
+        jobKeyWord:"informatique",
         city:"",
         contractType:"",
     };
@@ -24,7 +24,6 @@ class APIPoleEmploi extends React.Component {
                          }
                        })
                 .then(res => this.setState({token : res.data.access_token, isToken:true}, ()=>{this.getJobOffers()} ))
-                console.log(this.state.token)
                 
             };
             
@@ -40,7 +39,6 @@ class APIPoleEmploi extends React.Component {
                      }
                    })
                 .then(res => this.setState({jobOffers: res.data.resultats}))
-                console.log("job")
            }
             
     handleResearchParams=()=>{
@@ -55,7 +53,6 @@ class APIPoleEmploi extends React.Component {
    componentDidUpdate() {
         if (this.props.userKeyWord !== this.state.jobKeyWord) {
            this.handleResearchParams()
-          console.log("nouvelle props !");
           this.getTokenPE()
         }
       }
@@ -66,18 +63,9 @@ class APIPoleEmploi extends React.Component {
         <div>
             {this.state.jobOffers.map(offer => (
                 <div key={offer.id}>
-                    <SearchResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise != undefined && offer.entreprise.nom} contractType={offer.typeContrat}/>
-                {/* <p>{offer.intitule}</p>
-                <p>{offer.entreprise != undefined && offer.entreprise.nom}</p>
-                <p>{offer.description}</p>
-                <p>{offer.lieuTravail.commune}</p>
-                <p>{offer.lieuTravail.libelle}</p>
-                <p>{offer.origineOffre.urlOrigine}</p>
-                <p>{offer.typeContrat}</p>
-                <p>{offer.origineOffre.partenaires.url}</p> */}
+                    <SearchResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise !== undefined && offer.entreprise.nom} contractType={offer.typeContrat}/>
                 </div>
             ))}
-            {console.log(`Le nouveau state : ${this.state.jobKeyWord}`)}
         </div>
         );
     }

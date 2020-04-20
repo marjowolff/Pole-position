@@ -1,3 +1,15 @@
-input{
+@font-face{
+    font-family : "Cereal";
+    src : url('./AirbnbCerealMedium.woff');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family : "Cereal", Helvetica, Arial, sans-serif;
+  }
+
+  input{
     margin :100px;
 }

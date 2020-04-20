@@ -12,7 +12,6 @@ class RechercheJobDeReve extends React.Component {
                 value={this.props.userKeyWord}
                 onChange={this.props.handleChangeJobReve}
                 />
-                {console.log(this.props.userKeyWord)}
             </div>
         )
     }
