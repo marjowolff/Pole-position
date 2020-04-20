@@ -20,7 +20,7 @@ class App extends React.Component {
         <BurgerMenu/>
         <Geolocalisation/>
         <RechercheJobDeReve userKeyWord={this.state.userKeyWord} handleChangeJobReve={this.handleChangeJobReve}/>
-        <APIPoleEmploi/>
+        <APIPoleEmploi userKeyWord={this.state.userKeyWord}/>
       </div>
     );
   }

@@ -41,12 +41,12 @@ class APIPoleEmploi extends React.Component {
                 .then(res => this.setState({jobOffers: res.data.resultats, isLoaded :true}))
            }
             
-          
+
         
     componentDidMount(){
-      this.getTokenPE()
+        this.getTokenPE()
+    }
     
-     }
     render(){
         
         return(
