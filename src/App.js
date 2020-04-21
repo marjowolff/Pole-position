@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import BurgerMenu from './components/BurgerMenu'
+import Navigation from './components/Navigation'
 import APIPoleEmploi from './components/APIPoleEmploi';
 import Geolocalisation from './components/Geolocalisation';
 import MeLocaliser from './components/MeLocaliser'
@@ -13,7 +13,7 @@ function App() {
   return (
     <Router forceRefresh={true}>
       <div>
-        <BurgerMenu />
+        <Navigation />
         <Switch>
           <Route path="/" exact component={Accueil} />
           <Route path="/geolocalisation" component={Geolocalisation} />
@@ -30,10 +30,10 @@ function App() {
 const Accueil = () => (
   <div>
     <h1>Home Page</h1>
-    <Link to="/geolocalisation">
+    <Link to="/geolocalisation" className="Path">
       <li>Page Geolocalisation</li>
     </Link>
-    <Link to="/apiPoleEmploi">
+    <Link to="/apiPoleEmploi" className="Path">
       <li>Page API Pole Emploi</li>
     </Link>
   </div>
