@@ -10,6 +10,7 @@ class RechercheJobDeReve extends React.Component {
                 <input 
                 type="text" 
                 value={this.props.userKeyWord}
+                placeholder="Le job de vos rêves"
                 onChange={this.props.handleChangeJobReve}
                 />
             </div>

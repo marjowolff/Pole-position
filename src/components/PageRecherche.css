@@ -11,5 +11,9 @@
   }
 
   input{
-    margin :100px;
+    margin :50px 100px;
+}
+
+button{
+    margin :50px 100px;
 }

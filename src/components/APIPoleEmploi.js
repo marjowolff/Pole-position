@@ -13,6 +13,7 @@ class APIPoleEmploi extends React.Component {
         jobKeyWord:"informatique",
         city:"",
         contractType:"",
+        runAPI : false,
     };
     }
     getTokenPE = () => {
@@ -45,15 +46,16 @@ class APIPoleEmploi extends React.Component {
       this.setState({jobKeyWord:this.props.userKeyWord})
        
     }
-        
-    componentDidMount(){
-        this.getTokenPE()
-    }
+
 
    componentDidUpdate() {
         if (this.props.userKeyWord !== this.state.jobKeyWord) {
-           this.handleResearchParams()
-          this.getTokenPE()
+            this.handleResearchParams()
+        }
+        if (this.props.userValid ==! this.state.runAPI){
+            this.getTokenPE()
+            console.log("valider")
+            this.setState({runAPI : !this.state.runAPI})
         }
       }
 
