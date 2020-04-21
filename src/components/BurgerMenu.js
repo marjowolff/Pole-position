@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './BurgerMenu.css';
 
 
@@ -19,11 +20,19 @@ const Burger = () => {
                     </div>
                     <div class="Link">
                         <ul>
-                            <li><a href="#">ACCUEIL</a></li>
-                            <li><a href="#">ME LOCALISER</a></li>
-                            <li><a href="#">AIDE</a></li>
-                            <li><a href="#">CONTACT</a></li>
-                            <li><a href="#">MENTIONS LEGALES</a></li>
+                        <Link to="/" className="Path">
+                                <li>ACCUEIL</li>
+                            </Link>
+                            <Link to="/aide" className="Path">
+                                <li>AIDE</li>
+                            </Link>
+                            <Link to="/meLocaliser" className="Path">
+                                <li>ME LOCALISER</li>
+                            </Link>
+                            <Link to="/contact" className="Path">
+                                <li>CONTACT</li>
+                            </Link>
+                            
                         </ul>
                     </div>
                 </nav>
