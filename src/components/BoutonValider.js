@@ -1,13 +1,12 @@
 import React from 'react';
 import './PageRecherche.css';
-
 class BoutonValider extends React.Component {
-   
-   
-    render(){
+
+
+    render() {
         return (
             <div>
-               <button onClick={this.props.handleValider}>
+                <button onClick={this.props.handleValider}>
                     Valider
                </button>
             </div>
