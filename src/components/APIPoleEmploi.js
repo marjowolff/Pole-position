@@ -54,7 +54,6 @@ class APIPoleEmploi extends React.Component {
         }
         if (this.props.userValid ==! this.state.runAPI){
             this.getTokenPE()
-            console.log("valider")
             this.setState({runAPI : !this.state.runAPI})
         }
       }
