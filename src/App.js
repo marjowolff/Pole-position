@@ -29,17 +29,21 @@ class App extends React.Component {
       <Router forceRefresh={true}>
         <div>
           <Navigation />
-          <RechercheJobDeReve userKeyWord={this.state.userKeyWord} handleChangeJobReve={this.handleChangeJobReve} />
-          <BoutonValider userValid={this.state.userValid} handleValider={this.handleValider} />
-          <BackButton />
+
           <Switch>
             <Route path="/" exact component={Accueil} />
             <Route path="/geolocalisation" component={Geolocalisation} />
-            <Route userKeyWord={this.state.userKeyWord} userValid={this.state.userValid} path="/apiPoleEmploi" component={APIPoleEmploi} />
+            <Route  path="/apiPoleEmploi" component={APIPoleEmploi} />
             <Route path="/meLocaliser" component={MeLocaliser} />
             <Route path="/aide" component={Aide} />
             <Route path="/contact" component={Contact} />
+            
           </Switch>
+          <RechercheJobDeReve userKeyWord={this.state.userKeyWord} handleChangeJobReve={this.handleChangeJobReve} />
+          <BoutonValider userValid={this.state.userValid} handleValider={this.handleValider} />
+          <APIPoleEmploi userKeyWord={this.state.userKeyWord} userValid={this.state.userValid} />
+          <BackButton />
+
         </div>
       </Router>
     );
