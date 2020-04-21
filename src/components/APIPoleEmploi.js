@@ -10,9 +10,10 @@ class APIPoleEmploi extends React.Component {
         token : "test",
         isToken : false,
         isLoaded: false,
-        jobKeyWord:"",
+        jobKeyWord:"informatique",
         city:"",
         contractType:"",
+        runAPI : false,
     };
     }
     getTokenPE = () => {
@@ -24,7 +25,6 @@ class APIPoleEmploi extends React.Component {
                          }
                        })
                 .then(res => this.setState({token : res.data.access_token, isToken:true}, ()=>{this.getJobOffers()} ))
-                console.log(this.state.token)
                 
             };
             
@@ -34,38 +34,39 @@ class APIPoleEmploi extends React.Component {
                 url: 'https://api.emploi-store.fr/partenaire/offresdemploi/v2/offres/search',
                 headers: {Authorization: `Bearer ${this.state.token}`},
                 params: {
-                    motsCles : "web",
+                    motsCles : this.state.jobKeyWord,
                     commune : 75118,
                     typeContrat :"CDI"
                      }
                    })
-                .then(res => this.setState({jobOffers: res.data.resultats, isLoaded :true}))
+                .then(res => this.setState({jobOffers: res.data.resultats}))
            }
             
-          
-        
-    componentDidMount(){
-      this.getTokenPE()
-    
-     }
+    handleResearchParams=()=>{
+      this.setState({jobKeyWord:this.props.userKeyWord})
+       
+    }
+
+
+   componentDidUpdate() {
+        if (this.props.userKeyWord !== this.state.jobKeyWord) {
+            this.handleResearchParams()
+        }
+        if (this.props.userValid ==! this.state.runAPI){
+            this.getTokenPE()
+            this.setState({runAPI : !this.state.runAPI})
+        }
+      }
+
     render(){
         
         return(
         <div>
             {this.state.jobOffers.map(offer => (
                 <div key={offer.id}>
-                    <SearchResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise != undefined && offer.entreprise.nom} contractType={offer.typeContrat}/>
-                {/* <p>{offer.intitule}</p>
-                <p>{offer.entreprise != undefined && offer.entreprise.nom}</p>
-                <p>{offer.description}</p>
-                <p>{offer.lieuTravail.commune}</p>
-                <p>{offer.lieuTravail.libelle}</p>
-                <p>{offer.origineOffre.urlOrigine}</p>
-                <p>{offer.typeContrat}</p>
-                <p>{offer.origineOffre.partenaires.url}</p> */}
+                    <SearchResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise !== undefined && offer.entreprise.nom} contractType={offer.typeContrat}/>
                 </div>
             ))}
-            
         </div>
         );
     }
