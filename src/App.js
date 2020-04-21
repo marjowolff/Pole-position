@@ -5,7 +5,7 @@ import APIPoleEmploi from './components/APIPoleEmploi';
 import Geolocalisation from './components/Geolocalisation';
 import RechercheJobDeReve from './components/RechercheJobDeReve';
 import BoutonValider from './components/BoutonValider';
-
+import BackButton from './components/BackButton'
 
 class App extends React.Component {
   state = {
@@ -26,6 +26,7 @@ class App extends React.Component {
         <Geolocalisation/>
         <RechercheJobDeReve userKeyWord={this.state.userKeyWord} handleChangeJobReve={this.handleChangeJobReve}/>
         <BoutonValider userValid={this.state.userValid} handleValider={this.handleValider}/>
+        <BackButton />
         <APIPoleEmploi userKeyWord={this.state.userKeyWord} userValid={this.state.userValid}/>
       </div>
     );
