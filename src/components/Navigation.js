@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navigation.css';
+import Logo from "./Logo"
 
 
 
@@ -17,8 +18,9 @@ const Burger = () => {
                         <div className="Burger" role="button" onClick={() => setStatus(status === 'open' ? 'close' : 'open')}>
                             <div className="Wrap"></div>
                         </div>
+                        <Logo />
                     </div>
-                    <div class="Link">
+                    <div class="Links">
                         <ul>
                         <Link to="/" className="Path">
                                 <li>ACCUEIL</li>
