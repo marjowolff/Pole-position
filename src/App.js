@@ -32,11 +32,10 @@ class App extends React.Component {
           <RechercheJobDeReve userKeyWord={this.state.userKeyWord} handleChangeJobReve={this.handleChangeJobReve} />
           <BoutonValider userValid={this.state.userValid} handleValider={this.handleValider} />
           <BackButton />
-          <APIPoleEmploi userKeyWord={this.state.userKeyWord} userValid={this.state.userValid} />
           <Switch>
             <Route path="/" exact component={Accueil} />
             <Route path="/geolocalisation" component={Geolocalisation} />
-            <Route path="/apiPoleEmploi" component={APIPoleEmploi} />
+            <Route userKeyWord={this.state.userKeyWord} userValid={this.state.userValid} path="/apiPoleEmploi" component={APIPoleEmploi} />
             <Route path="/meLocaliser" component={MeLocaliser} />
             <Route path="/aide" component={Aide} />
             <Route path="/contact" component={Contact} />
