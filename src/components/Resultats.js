@@ -12,9 +12,9 @@ class Resultats extends React.Component {
         isToken : false,
         isLoaded: false,
         jobKeyWord:"communication",
-        city:"",
-        contractType:"",
         runAPI : false,
+        contractChoice:"",
+        natureContratChoice:""
     };
     }
     getTokenPE = () => {
@@ -37,7 +37,8 @@ class Resultats extends React.Component {
                 params: {
                     motsCles : this.state.jobKeyWord,
                     commune : 75118,
-                    typeContrat :"CDI"
+                    typeContrat :this.state.contractChoice,
+                    natureContrat : this.state.natureContratChoice
                      }
                    })
                 .then(res => this.setState({jobOffers: res.data.resultats}))
@@ -47,12 +48,33 @@ class Resultats extends React.Component {
       this.setState({jobKeyWord:this.props.location.data.userKeyWord})
        
     }
+    handleContractChoice = () =>{
+        let contractTab=[]
+        if (this.props.location.data.selectCDI === true){
+            contractTab.push("CDI")
+        } 
+        if (this.props.location.data.selectCDD === true){
+            contractTab.push("CDD")
+        }
+        if (this.props.location.data.selectINTERIM === true){
+            contractTab.push("MIS")
+        }
+        let contractList=contractTab.join(",")
+        this.setState({contractChoice : contractList})
+        }
+    handleNatureContrat =() =>{
+        if (this.props.location.data.selectApprenti === true){
+            this.setState({natureContratChoice : "E2"})
+        } 
+    }
+           
 
-
-   componentDidMount() {
+    componentDidMount() {
         if (this.props.location.data.userKeyWord !== this.state.jobKeyWord) {
             this.handleResearchParams()
         }
+        this.handleContractChoice()
+        this.handleNatureContrat() 
         if (this.props.userValid !== this.state.runAPI){
             this.getTokenPE()
             this.setState({runAPI : !this.state.runAPI})
@@ -60,7 +82,7 @@ class Resultats extends React.Component {
       }
 
     render(){
-        
+        console.log(`State NatureContractChoice : ${this.state.natureContratChoice}`)
         return(
             
         <div>
@@ -69,6 +91,7 @@ class Resultats extends React.Component {
             {this.state.jobOffers.map(offer => (
                 <div key={offer.id}>
                     <SearchResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise !== undefined && offer.entreprise.nom} contractType={offer.typeContrat}/>
+                     {console.log(offer.natureContrat)}
                 </div>
             ))}
         </div>

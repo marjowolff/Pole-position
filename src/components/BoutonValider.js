@@ -14,21 +14,20 @@ class BoutonValider extends React.Component {
                     pathname: "/resultats",
                     data:{
                         userKeyWord : this.props.userKeyWord,
-                        userValid: this.props.userValid
+                        userValid: this.props.userValid,
+                        selectCDI: this.props.selectCDI,
+                        selectCDD :this.props.selectCDD,
+                        selectINTERIM :this.props.selectINTERIM,
+                        selectApprenti :this.props.selectApprenti
                     }}}
                 
                     className="Path">
                 <button onClick={this.props.handleValider}>
                     Valider
                 </button>
-                </Link>
-                
-                
-                
-                
-                
+                </Link>  
             </div>
-            //{console.log(this.props)}
+            
         )
     }
 }
