@@ -1,8 +1,9 @@
 import React from 'react'
 import axios from "axios"
 import SearchResults from './SearchResults'
+import BackButton from './BackButton'
 
-class APIPoleEmploi extends React.Component {
+class Resultats extends React.Component {
     constructor(props){
         super(props);
         this.state = {
@@ -48,7 +49,7 @@ class APIPoleEmploi extends React.Component {
     }
 
 
-   componentDidUpdate() {
+   componentDidMount() {
         if (this.props.userKeyWord !== this.state.jobKeyWord) {
             this.handleResearchParams()
         }
@@ -59,9 +60,12 @@ class APIPoleEmploi extends React.Component {
       }
 
     render(){
-        
+        console.log(this.state)
+        console.log(this.props)
         return(
+            
         <div>
+            <BackButton />
             {this.state.jobOffers.map(offer => (
                 <div key={offer.id}>
                     <SearchResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise !== undefined && offer.entreprise.nom} contractType={offer.typeContrat}/>
@@ -72,4 +76,4 @@ class APIPoleEmploi extends React.Component {
     }
 }
 
-export default APIPoleEmploi
+export default Resultats
