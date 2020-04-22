@@ -12,7 +12,7 @@ class BackButton extends React.Component {
         return (
             <div class="divButton">
             <Link to="/">
-                <button class="backButton" onClick={this.handleClick}>Modifier ma recherche</button>
+                <button className="backButton" onClick={this.handleClick}>Modifier ma recherche</button>
             </Link>
             </div>
         )

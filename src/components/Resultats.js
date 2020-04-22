@@ -11,7 +11,7 @@ class Resultats extends React.Component {
         token : "test",
         isToken : false,
         isLoaded: false,
-        jobKeyWord:"informatique",
+        jobKeyWord:"communication",
         city:"",
         contractType:"",
         runAPI : false,
@@ -44,27 +44,27 @@ class Resultats extends React.Component {
            }
             
     handleResearchParams=()=>{
-      this.setState({jobKeyWord:this.props.userKeyWord})
+      this.setState({jobKeyWord:this.props.location.data.userKeyWord})
        
     }
 
 
    componentDidMount() {
-        if (this.props.userKeyWord !== this.state.jobKeyWord) {
+        if (this.props.location.data.userKeyWord !== this.state.jobKeyWord) {
             this.handleResearchParams()
         }
-        if (this.props.userValid ==! this.state.runAPI){
+        if (this.props.userValid !== this.state.runAPI){
             this.getTokenPE()
             this.setState({runAPI : !this.state.runAPI})
         }
       }
 
     render(){
-        console.log(this.state)
-        console.log(this.props)
+        
         return(
             
         <div>
+            <h2>C'est la page de Resultats</h2>
             <BackButton />
             {this.state.jobOffers.map(offer => (
                 <div key={offer.id}>
