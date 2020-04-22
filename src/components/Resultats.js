@@ -1,8 +1,9 @@
 import React from 'react'
 import axios from "axios"
 import SearchResults from './SearchResults'
+import BackButton from './BackButton'
 
-class APIPoleEmploi extends React.Component {
+class Resultats extends React.Component {
     constructor(props){
         super(props);
         this.state = {
@@ -10,7 +11,7 @@ class APIPoleEmploi extends React.Component {
         token : "test",
         isToken : false,
         isLoaded: false,
-        jobKeyWord:"informatique",
+        jobKeyWord:"communication",
         city:"",
         contractType:"",
         runAPI : false,
@@ -43,16 +44,16 @@ class APIPoleEmploi extends React.Component {
            }
             
     handleResearchParams=()=>{
-      this.setState({jobKeyWord:this.props.userKeyWord})
+      this.setState({jobKeyWord:this.props.location.data.userKeyWord})
        
     }
 
 
-   componentDidUpdate() {
-        if (this.props.userKeyWord !== this.state.jobKeyWord) {
+   componentDidMount() {
+        if (this.props.location.data.userKeyWord !== this.state.jobKeyWord) {
             this.handleResearchParams()
         }
-        if (this.props.userValid ==! this.state.runAPI){
+        if (this.props.userValid !== this.state.runAPI){
             this.getTokenPE()
             this.setState({runAPI : !this.state.runAPI})
         }
@@ -61,7 +62,10 @@ class APIPoleEmploi extends React.Component {
     render(){
         
         return(
+            
         <div>
+            <h2>C'est la page de Resultats</h2>
+            <BackButton />
             {this.state.jobOffers.map(offer => (
                 <div key={offer.id}>
                     <SearchResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise !== undefined && offer.entreprise.nom} contractType={offer.typeContrat}/>
@@ -72,4 +76,4 @@ class APIPoleEmploi extends React.Component {
     }
 }
 
-export default APIPoleEmploi
+export default Resultats
