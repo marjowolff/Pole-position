@@ -8,9 +8,6 @@ import Logo from "./Logo"
 const Burger = () => {
     const [status, setStatus] = useState('close');
     return (
-
-        <body>
-
             <div className={status}>
                 <nav>
                     
@@ -20,20 +17,14 @@ const Burger = () => {
                         </div>
                         <Logo />
                     </div>
-                    <div class="Links">
+                    <div className="Links">
                         <ul>
-                        <Link to="/" className="Path">
-                                <li>Recherche</li>
-                            </Link>
-                            <Link to="/resultats" className="Path">
-                                <li>Résultats</li>
-                            </Link> 
+                        <li><Link to="/" className="Path">Recherche</Link></li>
+                        <li><Link to="/resultats" className="Path">Résultats</Link></li>
                         </ul>
                     </div>
                 </nav>
             </div>
-
-        </body>
 
     )
 }
