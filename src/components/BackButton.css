@@ -8,10 +8,12 @@ button {
     white-space: nowrap;
     text-decoration: none;
     padding: 0.25rem 0.5rem;
-    margin: 0.25rem;
+    margin: 0.25rem auto;
+    /* text-align: center; */
     cursor: pointer;
 
 }
+
 
 .GeolocButton {
     border: 0;
@@ -39,4 +41,16 @@ button {
     background: white;
     border:none;
     position: relative;
+
+
+.divButton {
+    display:flex;
+    flex-direction:column;
+    align-items:stretch
+}
+
+a {
+    text-align: center;
+    margin:0.5rem auto;
+
 }
