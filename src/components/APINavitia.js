@@ -36,24 +36,24 @@ class Navitia extends React.Component {
           <div>Loading ...</div>
         ) : (
           <h1>
-            Test Navitia
-            <p> Longitude : {this.state.longitude}</p>
-            <p> Latitude : {this.state.latitude}</p>
-            <div>
+           
+            <p> Votre Longitude : {this.state.longitude}</p>
+            <p> Votre Latitude : {this.state.latitude}</p>
+            <p>
               {" "}
-              Adresse de départ :{" "}
+              Votre Adresse de départ :{" "}
               {this.state.transports.journeys[0].sections[0].from.address.label}
-            </div>
-            <div>
+            </p>
+            <p>
               {" "}
-              Adresse d'arrivée :{" "}
+              Votre Adresse d'arrivée :{" "}
               {
                 this.state.transports.journeys[0].sections[
                   this.state.transports.journeys[0].sections.length - 1
                 ].to.address.label
               }
-            </div>
-            <div> Temps de transport : {this.state.duration} minutes </div>
+            </p>
+            <p> Temps de transport : {this.state.duration} minutes </p>
           </h1>
         )}
       </div>

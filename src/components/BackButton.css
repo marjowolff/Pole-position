@@ -15,6 +15,34 @@ button {
 }
 
 
+.GeolocButton {
+    border: 0;
+    border-radius: 0.25rem;
+    background:lightgrey;
+    color: black;
+    font-size: 1rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    margin: 0.5rem;
+    cursor: pointer;
+
+}
+
+.adressInput {
+    border-color: lightgrey;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+}
+
+#tempsTrajet {
+    font-size: 16px;
+    background: white;
+    border:none;
+    position: relative;
+
+
 .divButton {
     display:flex;
     flex-direction:column;
@@ -24,4 +52,5 @@ button {
 a {
     text-align: center;
     margin:0.5rem auto;
+
 }

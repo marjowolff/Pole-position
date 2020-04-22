@@ -1,6 +1,10 @@
 import React from 'react'
+
 import RechercheJobDeReve from './RechercheJobDeReve'
+import VotreAdresse from './VotreAdresse'
+import VotreTempsTrajet from './VotreTempsTrajet'
 import BoutonValider from './BoutonValider'
+
 
 
 class Recherche extends React.Component {
@@ -20,9 +24,13 @@ class Recherche extends React.Component {
   render (){
     return (
       <div>
-        <h1>Hello</h1>
+
+        <h1>Bienvenue !</h1>
         <RechercheJobDeReve userKeyWord={this.state.userKeyWord} handleChangeJobReve={this.handleChangeJobReve}/>
+        <VotreAdresse />
+        <VotreTempsTrajet />
         <BoutonValider userValid={this.state.userValid} userKeyWord={this.state.userKeyWord} handleValider={this.handleValider}/>  
+
       </div>
     );
   }
