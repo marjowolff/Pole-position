@@ -10,9 +10,11 @@ class BackButton extends React.Component {
     render() {
 
         return (
+            <div class="divButton">
             <Link to="/">
                 <button class="backButton" onClick={this.handleClick}>Modifier ma recherche</button>
             </Link>
+            </div>
         )
     }
 }
