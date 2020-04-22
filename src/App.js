@@ -1,15 +1,12 @@
 import React from 'react';
 import './App.css';
 import Navigation from './components/Navigation'
-import MenuGeneral from './components/MenuGeneral'
 import APIPoleEmploi from './components/APIPoleEmploi';
 import Geolocalisation from './components/Geolocalisation';
 import RechercheJobDeReve from './components/RechercheJobDeReve';
 import BoutonValider from './components/BoutonValider';
 import BackButton from './components/BackButton'
-import MeLocaliser from './components/MeLocaliser'
-import Aide from './components/Aide';
-import Contact from './components/Contact';
+import Recherche from './components/Recherche'
 import { Link } from 'react-router-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -30,17 +27,13 @@ class App extends React.Component {
       <Router forceRefresh={true}>
         <div>
           <Navigation />
-          <MenuGeneral />
           <Switch>
-            <Route path="/" exact component={Accueil} />
-            <Route path="/geolocalisation" component={Geolocalisation} />
-            <Route path="/meLocaliser" component={MeLocaliser} />
-            <Route path="/aide" component={Aide} />
-            <Route path="/contact" component={Contact} />
+            <Route exact path="/" component={Recherche} />
+            <Route path="/resultats"><APIPoleEmploi userKeyWord={this.state.userKeyWord} userValid={this.state.userValid} /></Route>
           </Switch>
-          <APIPoleEmploi userKeyWord={this.state.userKeyWord} userValid={this.state.userValid} /> <RechercheJobDeReve userKeyWord={this.state.userKeyWord} handleChangeJobReve={this.handleChangeJobReve} />
-          <BoutonValider userValid={this.state.userValid} handleValider={this.handleValider} />
-          <BackButton />
+          {/* <RechercheJobDeReve userKeyWord={this.state.userKeyWord} handleChangeJobReve={this.handleChangeJobReve} /> */}
+          {/* <BoutonValider userValid={this.state.userValid} handleValider={this.handleValider} /> */}
+          {/* <BackButton /> */}
         </div>
       </Router>
     );
@@ -48,13 +41,5 @@ class App extends React.Component {
   }
 }
 
-const Accueil = () => (
-  <div>
-    <h1>Home Page</h1>
-    <Link to="/geolocalisation">
-      <li>Page Geolocalisation</li>
-    </Link>
 
-  </div>
-)
 export default App;
