@@ -25,6 +25,10 @@ h2 {
     font-size:18px;
 }
 
+p {
+    font-size:15px;
+}
+
 .cardSeparator {
     display:flex;
     justify-content: space-around;
