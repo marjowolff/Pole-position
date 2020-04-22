@@ -28,12 +28,16 @@ class App extends React.Component {
         <div>
           <Navigation />
           <Switch>
-            <Route exact path="/" component={Recherche} />
+            <Route exact path="/">
+            <Recherche userKeyWord={this.state.userKeyWord} handleChangeJobReve={this.handleChangeJobReve} userValid={this.state.userValid} handleValider={this.handleValider}/>
+            </Route>
             <Route path="/resultats"><APIPoleEmploi userKeyWord={this.state.userKeyWord} userValid={this.state.userValid} /></Route>
           </Switch>
-          {/* <RechercheJobDeReve userKeyWord={this.state.userKeyWord} handleChangeJobReve={this.handleChangeJobReve} /> */}
+          {/* <Recherche userKeyWord={this.state.userKeyWord} handleChangeJobReve={this.handleChangeJobReve} /> */}
           {/* <BoutonValider userValid={this.state.userValid} handleValider={this.handleValider} /> */}
           {/* <BackButton /> */}
+          {console.log(this.state.userKeyWord)}
+          {console.log(this.state.userValid)}
         </div>
       </Router>
     );
