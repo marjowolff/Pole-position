@@ -13,7 +13,12 @@
   input{
     margin :50px 100px;
 }
-
+.ON{
+    background-color: #6497B8;
+}
+.OFF{
+    background-color: rgb(189, 184, 184);
+}
 /* button{
     margin :50px 100px;
 } */
