@@ -4,19 +4,14 @@ import SearchResults from './SearchResults'
 import BackButton from './BackButton'
 
 class Resultats extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
+    state = {
         jobOffers: [],
-        token : "test",
-        isToken : false,
-        isLoaded: false,
-        jobKeyWord:"communication",
-        runAPI : false,
+        token : "no token",
+        jobKeyWord:"",
         contractChoice:"",
         natureContratChoice:""
     };
-    }
+    
     getTokenPE = () => {
                 axios({
                   method: 'post',
@@ -25,7 +20,7 @@ class Resultats extends React.Component {
                       'Content-Type':'application/x-www-form-urlencoded',
                          }
                        })
-                .then(res => this.setState({token : res.data.access_token, isToken:true}, ()=>{this.getJobOffers()} ))
+                .then(res => this.setState({token : res.data.access_token}, ()=>{this.getJobOffers()} ))
                 
             };
             
@@ -44,9 +39,10 @@ class Resultats extends React.Component {
                 .then(res => this.setState({jobOffers: res.data.resultats}))
            }
             
-    handleResearchParams=()=>{
-      this.setState({jobKeyWord:this.props.location.data.userKeyWord})
-       
+    handleKeyWords=()=>{
+        if (this.props.location.data.userKeyWord !== this.state.jobKeyWord){
+            this.setState({jobKeyWord:this.props.location.data.userKeyWord})
+        }
     }
     handleContractChoice = () =>{
         let contractTab=[]
@@ -70,28 +66,19 @@ class Resultats extends React.Component {
            
 
     componentDidMount() {
-        if (this.props.location.data.userKeyWord !== this.state.jobKeyWord) {
-            this.handleResearchParams()
-        }
+        this.handleKeyWords()
         this.handleContractChoice()
         this.handleNatureContrat() 
-        if (this.props.userValid !== this.state.runAPI){
-            this.getTokenPE()
-            this.setState({runAPI : !this.state.runAPI})
-        }
+        this.getTokenPE()  
       }
 
     render(){
-        console.log(`State NatureContractChoice : ${this.state.natureContratChoice}`)
         return(
-            
         <div>
-            <h2>C'est la page de Resultats</h2>
             <BackButton />
             {this.state.jobOffers.map(offer => (
                 <div key={offer.id}>
                     <SearchResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise !== undefined && offer.entreprise.nom} contractType={offer.typeContrat}/>
-                     {console.log(offer.natureContrat)}
                 </div>
             ))}
         </div>

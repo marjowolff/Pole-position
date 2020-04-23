@@ -1,16 +1,16 @@
 import React from 'react'
 
-import RechercheJobDeReve from './RechercheJobDeReve'
+import RechercheMotsCles from './RechercheMotsCles'
 import VotreAdresse from './VotreAdresse'
 import VotreTempsTrajet from './VotreTempsTrajet'
 import BoutonValider from './BoutonValider'
 import ChoixContrat from './ChoixContrat'
 
 
+
 class Recherche extends React.Component {
   state = {
     userKeyWord: "",
-    userValid: false,
     selectCDI:false,
     selectCDD:false,
     selectINTERIM:false,
@@ -19,9 +19,6 @@ class Recherche extends React.Component {
   handleChangeJobReve = (event) => {
     const userInput = event.target.value;
     this.setState({ userKeyWord: userInput })
-  }
-  handleValider = () => {
-    this.setState({ userValid: !this.state.userValid })
   }
   handleCDI = () => {
     this.setState({selectCDI : !this.state.selectCDI})
@@ -39,14 +36,14 @@ class Recherche extends React.Component {
   render (){
     return (
       
-      <div>
+      <div className="divPageRecherche">
 
         <h1>Bienvenue !</h1>
-        <RechercheJobDeReve userKeyWord={this.state.userKeyWord} handleChangeJobReve={this.handleChangeJobReve}/>
+        <RechercheMotsCles userKeyWord={this.state.userKeyWord} handleChangeJobReve={this.handleChangeJobReve}/>
         <VotreAdresse />
         <VotreTempsTrajet />
         <ChoixContrat selectCDI={this.state.selectCDI} handleCDI={this.handleCDI} selectCDD={this.state.selectCDD} handleCDD={this.handleCDD} selectINTERIM={this.state.selectINTERIM} handleINTERIM={this.handleINTERIM} selectApprenti={this.state.selectApprenti} handleApprenti={this.handleApprenti}/>
-        <BoutonValider userValid={this.state.userValid} userKeyWord={this.state.userKeyWord} handleValider={this.handleValider} selectCDI={this.state.selectCDI} selectCDD={this.state.selectCDD} selectINTERIM={this.state.selectINTERIM} selectApprenti={this.state.selectApprenti}/>  
+        <BoutonValider userKeyWord={this.state.userKeyWord} selectCDI={this.state.selectCDI} selectCDD={this.state.selectCDD} selectINTERIM={this.state.selectINTERIM} selectApprenti={this.state.selectApprenti}/>  
 
       </div>
     );

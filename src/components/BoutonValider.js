@@ -9,12 +9,11 @@ class BoutonValider extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className ="divButtonValider">
                 <Link to={{
                     pathname: "/resultats",
                     data:{
                         userKeyWord : this.props.userKeyWord,
-                        userValid: this.props.userValid,
                         selectCDI: this.props.selectCDI,
                         selectCDD :this.props.selectCDD,
                         selectINTERIM :this.props.selectINTERIM,
@@ -22,7 +21,7 @@ class BoutonValider extends React.Component {
                     }}}
                 
                     className="Path">
-                <button onClick={this.props.handleValider}>
+                <button className="ButtonValider">
                     Valider
                 </button>
                 </Link>  
