@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import './PageRecherche.css'
 
 class VotreTempsTrajet extends Component {
     render() {
         return (
-            <>
-            <div>
+            <div className="tempsTrajet">
+            <div className="tempsTrajetLabel">
                 <label htmlFor="tempsTrajet">Choisissez un temps de trajet</label>
             </div>
-            <div>
+            <div className="tempsTrajetSelect">
                 <select name="tempsTrajet" id="tempsTrajet">
                     <option value="aucuneImportance">--aucune importance--</option>
                     <option value="20min"> &lt; 20 min</option>
@@ -17,7 +18,7 @@ class VotreTempsTrajet extends Component {
                     <option value="1h15"> &lt; 1h 15</option>
                 </select>
             </div>
-            </>
+            </div>
         );
     }
 }

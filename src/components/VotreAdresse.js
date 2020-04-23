@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { MdMyLocation } from 'react-icons/md'
 import Geolocalisation from './Geolocalisation';
+import './PageRecherche.css'
 
 class VotreAdresse extends Component {
     
@@ -15,8 +16,8 @@ class VotreAdresse extends Component {
         console.log(this.state)
         return (
             
-            <div>
-                 <input className="adressInput"
+            <div className="divAddressInput">
+                 <input className="addressInput"
                 type="text" 
                 // value={this.props.userKeyWord}
                 placeholder="Votre adresse"
