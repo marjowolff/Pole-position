@@ -33,7 +33,8 @@ class Resultats extends React.Component {
                     motsCles : this.state.jobKeyWord,
                     commune : 75118,
                     typeContrat :this.state.contractChoice,
-                    natureContrat : this.state.natureContratChoice
+                    natureContrat : this.state.natureContratChoice,
+                    range : "0-10"
                      }
                    })
                 .then(res => this.setState({jobOffers: res.data.resultats}))
@@ -63,6 +64,7 @@ class Resultats extends React.Component {
             this.setState({natureContratChoice : "E2"})
         } 
     }
+    
            
 
     componentDidMount() {
@@ -79,6 +81,9 @@ class Resultats extends React.Component {
             {this.state.jobOffers.map(offer => (
                 <div key={offer.id}>
                     <SearchResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise !== undefined && offer.entreprise.nom} contractType={offer.typeContrat}/>
+                    <p>{offer.lieuTravail.codePostal}</p>
+                    <p>{offer.lieuTravail.latitude}</p>
+                    <p>{offer.lieuTravail.longitude}</p>
                 </div>
             ))}
         </div>

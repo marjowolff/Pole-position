@@ -14,7 +14,7 @@ class Recherche extends React.Component {
     selectCDI:false,
     selectCDD:false,
     selectINTERIM:false,
-    selectApprenti:false
+    selectApprenti:false,
   }
   handleChangeJobReve = (event) => {
     const userInput = event.target.value;
@@ -32,8 +32,10 @@ class Recherche extends React.Component {
   handleApprenti = () => {
     this.setState({selectApprenti: !this.state.selectApprenti}) 
   }
+  
 
   render (){
+    console.log(`State de result offers : ${this.state.resultOffers}`)
     return (
       
       <div className="divPageRecherche">
