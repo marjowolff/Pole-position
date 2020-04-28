@@ -41,7 +41,7 @@ class Navitia extends React.Component {
             <p> Votre Latitude : {this.state.latitude}</p>
             <p>
               {" "}
-              Votre Adresse de départ :{" "}
+              Votre Adresse géolocalisée :{" "}
               {this.state.transports.journeys[0].sections[0].from.address.label}
             </p>
             <p>
