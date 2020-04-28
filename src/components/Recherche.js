@@ -54,7 +54,7 @@ class Recherche extends React.Component {
         <VotreAdresse long={this.state.longitudeDepart} lat={this.state.latitudeDepart} handleLiftCoordDepart={this.handleLiftCoordDepart}/>
         <VotreTempsTrajet />
         <ChoixContrat selectCDI={this.state.selectCDI} handleCDI={this.handleCDI} selectCDD={this.state.selectCDD} handleCDD={this.handleCDD} selectINTERIM={this.state.selectINTERIM} handleINTERIM={this.handleINTERIM} selectApprenti={this.state.selectApprenti} handleApprenti={this.handleApprenti}/>
-        <BoutonValider userKeyWord={this.state.userKeyWord} selectCDI={this.state.selectCDI} selectCDD={this.state.selectCDD} selectINTERIM={this.state.selectINTERIM} selectApprenti={this.state.selectApprenti}/>  
+        <BoutonValider userKeyWord={this.state.userKeyWord} selectCDI={this.state.selectCDI} selectCDD={this.state.selectCDD} selectINTERIM={this.state.selectINTERIM} selectApprenti={this.state.selectApprenti} longitudeDepart={this.state.longitudeDepart} latitudeDepart={this.state.latitudeDepart}/>  
 
       </div>
     );

@@ -11,8 +11,8 @@ class Resultats extends React.Component {
         jobKeyWord:"",
         contractChoice:"",
         natureContratChoice:"",
-        longitude:2.2922926,
-        latitude:48.8583736
+        longitudeDepart:2.3003136,
+        latitudeDepart:48.7686144
     };
     
     getTokenPE = () => {
@@ -81,7 +81,7 @@ class Resultats extends React.Component {
         return(
         <div>
             <BackButton />
-            <NavitiaTime longitude={this.state.longitude} latitude={this.state.latitude}/>
+            <NavitiaTime longitude={this.state.longitudeDepart} latitude={this.state.latitudeDepart}/>
             {this.state.jobOffers.map(offer => (
                 <div key={offer.id}>
                     <SearchResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise !== undefined && offer.entreprise.nom} contractType={offer.typeContrat}/>

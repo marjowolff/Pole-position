@@ -6,10 +6,10 @@ class NavitiaTime extends React.Component {
     isloaded: false,
     duration: 0,
     token: "b0b9e3a3-8f64-4941-8ba7-b62b78071d18",
-    // longitudeDepart: this.props.longitude,
-    // latitudeArrivee: this.props.latitude,
-    longitudeArrivee: 2.3003136,
-    latitudeArrivee: 48.7686144,
+    longitudeDepart: this.props.longitude,
+    latitudeArrivee: this.props.latitude,
+    longitudeArrivee: 2.2931455,
+    latitudeArrivee: 48.858823,
   };
 
   getTransportationTime = () => {
