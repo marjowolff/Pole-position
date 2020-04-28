@@ -1,5 +1,5 @@
 import React from "react";
-import Navitia from "./APINavitia.js";
+import NavitiaAdresse from "./APINavitia.js";
 
 
 const erreur = (error) => {
@@ -53,7 +53,7 @@ class Geolocalisation extends React.Component {
           <div>Loading ...</div>
         ) : (
           <div>
-            <Navitia
+            <NavitiaAdresse
               longitude={this.state.longitude}
               latitude={this.state.latitude}
             />

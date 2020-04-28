@@ -2,6 +2,7 @@ import React from 'react'
 import axios from "axios"
 import SearchResults from './SearchResults'
 import BackButton from './BackButton'
+import NavitiaTime from "./APINavitiaTime.js";
 
 class Resultats extends React.Component {
     state = {
@@ -9,7 +10,9 @@ class Resultats extends React.Component {
         token : "no token",
         jobKeyWord:"",
         contractChoice:"",
-        natureContratChoice:""
+        natureContratChoice:"",
+        longitude:2.2922926,
+        latitude:48.8583736
     };
     
     getTokenPE = () => {
@@ -78,6 +81,7 @@ class Resultats extends React.Component {
         return(
         <div>
             <BackButton />
+            <NavitiaTime longitude={this.state.longitude} latitude={this.state.latitude}/>
             {this.state.jobOffers.map(offer => (
                 <div key={offer.id}>
                     <SearchResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise !== undefined && offer.entreprise.nom} contractType={offer.typeContrat}/>

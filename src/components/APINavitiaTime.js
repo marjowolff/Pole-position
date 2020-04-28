@@ -1,15 +1,15 @@
 import React from "react";
 
-class NavitiaAdresse extends React.Component {
+class NavitiaTime extends React.Component {
   state = {
     transports: [],
     isloaded: false,
     duration: 0,
     token: "b0b9e3a3-8f64-4941-8ba7-b62b78071d18",
-    longitude: this.props.longitude,
-    latitude: this.props.latitude,
-    longitudeArrivee: 2.2922926,
-    latitudeArrivee: 48.8583736,
+    // longitudeDepart: this.props.longitude,
+    // latitudeArrivee: this.props.latitude,
+    longitudeArrivee: 2.3003136,
+    latitudeArrivee: 48.7686144,
   };
 
   getTransportationTime = () => {
@@ -25,8 +25,11 @@ class NavitiaAdresse extends React.Component {
       });
   };
 
-  componentDidMount() {
-    this.getTransportationTime();
+   componentDidMount() {
+    console.log('dans le did mount')
+    const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${this.props.longitude};${this.props.latitude}&to=${this.state.longitudeArrivee};${this.state.latitudeArrivee}&key=${this.state.token}`;
+   console.log(url)
+     this.getTransportationTime();
   }
 
   render() {
@@ -38,8 +41,8 @@ class NavitiaAdresse extends React.Component {
         ) : (
           <h1>
            
-            <p> Votre Longitude : {this.state.longitude}</p>
-            <p> Votre Latitude : {this.state.latitude}</p>
+            <p> Votre Longitude : {this.props.longitude}</p>
+            <p> Votre Latitude : {this.props.latitude}</p>
             <p>
               {" "}
               Votre Adresse géolocalisée :{" "}
@@ -62,4 +65,4 @@ class NavitiaAdresse extends React.Component {
   }
 }
 
-export default NavitiaAdresse;
+export default NavitiaTime;
