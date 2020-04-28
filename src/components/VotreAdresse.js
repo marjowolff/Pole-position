@@ -24,6 +24,7 @@ class VotreAdresse extends Component {
                 // onChange={this.props.handleChangeJobReve}
                 />
                 <button className = "GeolocButton" onClick={this.handleClick}><MdMyLocation /> Me géolocaliser</button>
+                <p>Récup coord GPS {this.props.long} {this.props.lat}</p>
                 
                 {this.state.geoLocAsked &&  <Geolocalisation />}
             </div>

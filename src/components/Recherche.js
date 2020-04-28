@@ -15,6 +15,8 @@ class Recherche extends React.Component {
     selectCDD:false,
     selectINTERIM:false,
     selectApprenti:false,
+    longitudeDepart:2.0,
+    latitudeDepart:48.8106958
   }
   handleChangeJobReve = (event) => {
     const userInput = event.target.value;
@@ -42,7 +44,7 @@ class Recherche extends React.Component {
 
         <h1>Bienvenue !</h1>
         <RechercheMotsCles userKeyWord={this.state.userKeyWord} handleChangeJobReve={this.handleChangeJobReve}/>
-        <VotreAdresse />
+        <VotreAdresse long={this.state.longitudeDepart} lat={this.state.latitudeDepart}/>
         <VotreTempsTrajet />
         <ChoixContrat selectCDI={this.state.selectCDI} handleCDI={this.handleCDI} selectCDD={this.state.selectCDD} handleCDD={this.handleCDD} selectINTERIM={this.state.selectINTERIM} handleINTERIM={this.handleINTERIM} selectApprenti={this.state.selectApprenti} handleApprenti={this.handleApprenti}/>
         <BoutonValider userKeyWord={this.state.userKeyWord} selectCDI={this.state.selectCDI} selectCDD={this.state.selectCDD} selectINTERIM={this.state.selectINTERIM} selectApprenti={this.state.selectApprenti}/>  
