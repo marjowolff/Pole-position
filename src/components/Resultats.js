@@ -26,7 +26,6 @@ class Resultats extends React.Component {
     };
 
     getJobOffers = () => {
-<<<<<<< HEAD
         axios({
             method: 'get',
             url: 'https://api.emploi-store.fr/partenaire/offresdemploi/v2/offres/search',
@@ -35,7 +34,8 @@ class Resultats extends React.Component {
                 motsCles: this.state.jobKeyWord,
                 commune: 75118,
                 typeContrat: this.state.contractChoice,
-                natureContrat: this.state.natureContratChoice
+                natureContrat: this.state.natureContratChoice,
+                range: "0-10"
             }
         })
             .then(res => this.setState({ jobOffers: res.data.resultats, loaded: true }))
@@ -44,26 +44,6 @@ class Resultats extends React.Component {
     handleKeyWords = () => {
         if (this.props.location.data.userKeyWord !== this.state.jobKeyWord) {
             this.setState({ jobKeyWord: this.props.location.data.userKeyWord })
-=======
-            axios({
-                method: 'get',
-                url: 'https://api.emploi-store.fr/partenaire/offresdemploi/v2/offres/search',
-                headers: {Authorization: `Bearer ${this.state.token}`},
-                params: {
-                    motsCles : this.state.jobKeyWord,
-                    commune : 75118,
-                    typeContrat :this.state.contractChoice,
-                    natureContrat : this.state.natureContratChoice,
-                    range : "0-10"
-                     }
-                   })
-                .then(res => this.setState({jobOffers: res.data.resultats}))
-           }
-            
-    handleKeyWords=()=>{
-        if (this.props.location.data.userKeyWord !== this.state.jobKeyWord){
-            this.setState({jobKeyWord:this.props.location.data.userKeyWord})
->>>>>>> dev
         }
     }
     handleContractChoice = () => {
@@ -85,12 +65,8 @@ class Resultats extends React.Component {
             this.setState({ natureContratChoice: "E2" })
         }
     }
-<<<<<<< HEAD
 
-=======
-    
-           
->>>>>>> dev
+
 
     componentDidMount() {
         this.handleKeyWords()
@@ -99,7 +75,6 @@ class Resultats extends React.Component {
         this.getTokenPE()
     }
 
-<<<<<<< HEAD
     render() {
         return (
             <div>
@@ -109,21 +84,12 @@ class Resultats extends React.Component {
                         <div>{this.state.jobOffers.map(offer => (
                             <div key={offer.id}>
                                 <SearchResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise !== undefined && offer.entreprise.nom} contractType={offer.typeContrat} />
+                                <p>{offer.lieuTravail.codePostal}</p>
+                                <p>{offer.lieuTravail.latitude}</p>
+                                <p>{offer.lieuTravail.longitude}</p>
                             </div>
                         ))}</div>
                     )}
-=======
-    render(){
-        return(
-        <div>
-            <BackButton />
-            {this.state.jobOffers.map(offer => (
-                <div key={offer.id}>
-                    <SearchResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise !== undefined && offer.entreprise.nom} contractType={offer.typeContrat}/>
-                    <p>{offer.lieuTravail.codePostal}</p>
-                    <p>{offer.lieuTravail.latitude}</p>
-                    <p>{offer.lieuTravail.longitude}</p>
->>>>>>> dev
                 </div>
             </div>
         );
