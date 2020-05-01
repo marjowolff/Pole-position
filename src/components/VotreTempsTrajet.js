@@ -9,7 +9,7 @@ class VotreTempsTrajet extends Component {
                 <label htmlFor="tempsTrajet">Choisissez un temps de trajet</label>
             </div>
             <div className="tempsTrajetSelect">
-                <select name="tempsTrajet" id="tempsTrajet">
+                <select name="tempsTrajet" id="tempsTrajet" onChange={this.props.handleTempsTrajetMax}>
                     <option value="aucuneImportance">--aucune importance--</option>
                     <option value="20min"> &lt; 20 min</option>
                     <option value="30min"> &lt; 30 min</option>

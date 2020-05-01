@@ -15,6 +15,7 @@ class Recherche extends React.Component {
     selectCDD:false,
     selectINTERIM:false,
     selectApprenti:false,
+    tempsTrajetMax: "aucuneImportance"
   }
   handleChangeJobReve = (event) => {
     const userInput = event.target.value;
@@ -32,10 +33,15 @@ class Recherche extends React.Component {
   handleApprenti = () => {
     this.setState({selectApprenti: !this.state.selectApprenti}) 
   }
+  handleTempsTrajetMax =(event) =>{
+    const userSelect = event.target.value;
+    this.setState({tempsTrajetMax: userSelect})
+
+  }
   
 
   render (){
-    console.log(`State de result offers : ${this.state.resultOffers}`)
+    console.log(`State de tempsTrajetMax : ${this.state.tempsTrajetMax}`)
     return (
       
       <div className="divPageRecherche">
@@ -43,7 +49,7 @@ class Recherche extends React.Component {
         <h1>Bienvenue !</h1>
         <RechercheMotsCles userKeyWord={this.state.userKeyWord} handleChangeJobReve={this.handleChangeJobReve}/>
         <VotreAdresse />
-        <VotreTempsTrajet />
+        <VotreTempsTrajet handleTempsTrajetMax={this.handleTempsTrajetMax}/>
         <ChoixContrat selectCDI={this.state.selectCDI} handleCDI={this.handleCDI} selectCDD={this.state.selectCDD} handleCDD={this.handleCDD} selectINTERIM={this.state.selectINTERIM} handleINTERIM={this.handleINTERIM} selectApprenti={this.state.selectApprenti} handleApprenti={this.handleApprenti}/>
         <BoutonValider userKeyWord={this.state.userKeyWord} selectCDI={this.state.selectCDI} selectCDD={this.state.selectCDD} selectINTERIM={this.state.selectINTERIM} selectApprenti={this.state.selectApprenti}/>  
 
