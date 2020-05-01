@@ -9,7 +9,8 @@ class Resultats extends React.Component {
         token : "no token",
         jobKeyWord:"",
         contractChoice:"",
-        natureContratChoice:""
+        natureContratChoice:"",
+        loaded:false
     };
     
     getTokenPE = () => {
@@ -37,7 +38,7 @@ class Resultats extends React.Component {
                     range : "0-10"
                      }
                    })
-                .then(res => this.setState({jobOffers: res.data.resultats}))
+                .then(res => this.setState({jobOffers: res.data.resultats, loaded:true}))
            }
             
     handleKeyWords=()=>{
@@ -73,22 +74,41 @@ class Resultats extends React.Component {
         this.handleNatureContrat() 
         this.getTokenPE()  
       }
+      render(){
+        //console.log(`props temps trajet max :${this.props.location.data.tempsTrajetMax}`)
+        console.log(this.state.jobOffers[0])
 
-    render(){
-        return(
-        <div>
-            <BackButton />
-            {this.state.jobOffers.map(offer => (
-                <div key={offer.id}>
-                    <SearchResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise !== undefined && offer.entreprise.nom} contractType={offer.typeContrat}/>
-                    <p>{offer.lieuTravail.codePostal}</p>
-                    <p>{offer.lieuTravail.latitude}</p>
-                    <p>{offer.lieuTravail.longitude}</p>
+    if (this.state.loaded ) {
+        if (this.state.jobOffers.length > 0 ){
+            return(
+                <div>
+                    <BackButton />
+                     {this.state.jobOffers.map(offer => (
+                         <div key={offer.id}>
+                             <SearchResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise !== undefined && offer.entreprise.nom} contractType={offer.typeContrat} contractNature={offer.natureContrat}/>
+                             <p>{offer.lieuTravail.codePostal}</p>
+                             <p>{offer.lieuTravail.latitude}</p>
+                             <p>{offer.lieuTravail.longitude}</p>
+                        </div>
+                    ))}
+            </div>
+            );
+        } else {
+            return(
+                <div>
+                    <BackButton />
+                    <p>Aucune offre ne correspond à votre recherche</p>
                 </div>
-            ))}
-        </div>
-        );
+            )
+        }    
+
+    } else {
+            return(
+                <p>loading ...</p>
+            )
+        }
     }
+    
 }
 
 export default Resultats

@@ -16,9 +16,11 @@ class SearchResults extends React.Component {
                 <div className="card">
                     <h2>{this.props.title}</h2>
                     <div className="cardSeparator">
-                        <p><FaBuilding />{this.props.company}</p>
+                        {this.props.company ? 
+                        <p><FaBuilding />{this.props.company}</p> : <p><FaBuilding />Entreprise non renseignée</p>}
                         <p><GoLocation /> {this.props.city}</p>
-                        <p><IoMdBriefcase />{this.props.contractType}</p>
+                        {this.props.contractNature === "Contrat apprentissage" ?
+                        <p><IoMdBriefcase />{this.props.contractNature}</p> : <p><IoMdBriefcase />{this.props.contractType}</p>}
                     </div>
                     <p id="FaBus"><FaBus /> 20 min</p>
                     <button className="cardButton">Voir l'offre</button>
