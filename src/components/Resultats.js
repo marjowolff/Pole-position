@@ -2,6 +2,9 @@ import React from 'react'
 import axios from "axios"
 import SearchResults from './SearchResults'
 import BackButton from './BackButton'
+import Loader from "./Loader"
+
+
 
 class Resultats extends React.Component {
     state = {
@@ -80,7 +83,7 @@ class Resultats extends React.Component {
             <div>
                 <BackButton />
                 <div>
-                    {!this.state.loaded ? (<div>Loading ...</div>) : (
+                    {!this.state.loaded ? (<Loader />) : (
                         <div>{this.state.jobOffers.map(offer => (
                             <div key={offer.id}>
                                 <SearchResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise !== undefined && offer.entreprise.nom} contractType={offer.typeContrat} />
