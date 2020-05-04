@@ -27,9 +27,9 @@ class NavitiaTime extends React.Component {
   };
 
    componentDidMount() {
-    console.log('dans le did mount')
-    const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${this.props.longitudeDepart};${this.props.latitudeDepart}&to=${this.props.longitudeArrivee};${this.props.latitudeArrivee}&key=${this.state.token}`;
-   console.log(url)
+  //   console.log('dans le did mount')
+  //   const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${this.props.longitudeDepart};${this.props.latitudeDepart}&to=${this.props.longitudeArrivee};${this.props.latitudeArrivee}&key=${this.state.token}`;
+  //  console.log(url)
      this.getTransportationTime();
   }
 
