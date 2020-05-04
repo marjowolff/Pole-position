@@ -15,7 +15,7 @@ class Recherche extends React.Component {
     selectCDD:false,
     selectINTERIM:false,
     selectApprenti:false,
-    tempsTrajetMax: "aucuneImportance"
+    tempsTrajetMax: "aucuneImportance",
     longitudeDepart:2.0,
     latitudeDepart:48.0
   }

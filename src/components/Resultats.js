@@ -15,10 +15,10 @@ class Resultats extends React.Component {
         contractChoice:"",
         natureContratChoice:"",
         loaded: false,
-        longitudeDepart:this.props.location.data.longitudeDepart,//2.3350427 
-        latitudeDepart:this.props.location.data.latitudeDepart,//48.8108749
+        longitudeDepart:this.props.location.data.longitudeDepart, //2.3350427 
+        latitudeDepart:this.props.location.data.latitudeDepart, //48.8108749
         longitudeArrivee:2.3350427,
-        latitudeArrivee:48.8108749
+        latitudeArrivee:48.8108749,
     };
 
     getTokenPE = () => {
@@ -111,7 +111,8 @@ class Resultats extends React.Component {
                         )
                      )
                     }
-                                       
+                </div>
+             </div>                  
                     )}         
            
 };
