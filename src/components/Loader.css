@@ -1,0 +1,20 @@
+.Loader {
+  margin-top: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: 1s linear 0s infinite alternate slide;
+}
+
+@keyframes slide {
+  from {
+    /* transform: translate(0px); */
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    /* transform: translate(80%); */
+    opacity: 1;
+    transform: scale(0.6);
+  }
+}
