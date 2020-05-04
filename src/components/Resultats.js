@@ -11,7 +11,7 @@ class Resultats extends React.Component {
         jobKeyWord:"",
         contractChoice:"",
         natureContratChoice:"",
-        longitudeDepart:2.3003136,
+        longitudeDepart:2.3003136, //A dynamiser
         latitudeDepart:48.7686144
     };
     
