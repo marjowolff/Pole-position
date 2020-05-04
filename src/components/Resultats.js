@@ -15,8 +15,10 @@ class Resultats extends React.Component {
         contractChoice:"",
         natureContratChoice:"",
         loaded: false,
-        longitudeDepart:2.3003136, //A dynamiser
-        latitudeDepart:48.7686144
+        longitudeDepart:this.props.location.data.longitudeDepart,//2.3350427 
+        latitudeDepart:this.props.location.data.latitudeDepart,//48.8108749
+        longitudeArrivee:2.3350427,
+        latitudeArrivee:48.8108749
     };
 
     getTokenPE = () => {
@@ -86,15 +88,13 @@ class Resultats extends React.Component {
         return (
             <div>
                 <BackButton />
-                <NavitiaTime longitude={this.state.longitudeDepart} latitude={this.state.latitudeDepart}/>
+                {/* <NavitiaTime longitudeDepart={this.state.longitudeDepart} latitudeDepart={this.state.latitudeDepart} longitudeArrivee={this.state.longitudeArrivee} latitudeArrivee={this.state.latitudeArrivee} /> */}
                 <div>
                     {!this.state.loaded ? (<Loader />) : (
                         <div>{this.state.jobOffers.map(offer => (
                             <div key={offer.id}>
-                                <SearchResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise !== undefined && offer.entreprise.nom} contractType={offer.typeContrat} />
-                                <p>{offer.lieuTravail.codePostal}</p>
-                                <p>{offer.lieuTravail.latitude}</p>
-                                <p>{offer.lieuTravail.longitude}</p>
+                                <SearchResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise !== undefined && offer.entreprise.nom} contractType={offer.typeContrat} longitudeDepart={this.state.longitudeDepart} latitudeDepart={this.state.latitudeDepart} longitudeArrivee={offer.lieuTravail.longitude} latitudeArrivee={offer.lieuTravail.latitude}/>
+                                {/* <NavitiaTime longitudeDepart={this.state.longitudeDepart} latitudeDepart={this.state.latitudeDepart} longitudeArrivee={offer.lieuTravail.longitude} latitudeArrivee={offer.lieuTravail.latitude} /> */}
                             </div>
                         ))}</div>
                     )}
