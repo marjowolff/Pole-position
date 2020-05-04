@@ -16,6 +16,8 @@ class Recherche extends React.Component {
     selectINTERIM:false,
     selectApprenti:false,
     tempsTrajetMax: "aucuneImportance"
+    longitudeDepart:2.0,
+    latitudeDepart:48.0
   }
   handleChangeJobReve = (event) => {
     const userInput = event.target.value;
@@ -39,6 +41,12 @@ class Recherche extends React.Component {
 
   }
   
+  handleLiftCoordDepart = (lng,lat) => {
+    console.log('Dans le Lift State lng est ',lng)
+    console.log('Dans le Lift State state lng est ',this.state.longitudeDepart)
+    this.setState({longitudeDepart: lng,latitudeDepart:lat}) 
+  }
+ 
 
   render (){
     //console.log(`State de tempsTrajetMax : ${this.state.tempsTrajetMax}`)
@@ -47,11 +55,12 @@ class Recherche extends React.Component {
       <div className="divPageRecherche">
 
         <h1>Bienvenue !</h1>
-        <RechercheMotsCles userKeyWord={this.state.userKeyWord} handleChangeJobReve={this.handleChangeJobReve}/>
-        <VotreAdresse />
+        <RechercheMotsCles userKeyWord={this.state.userKeyWord} handleChangeJobReve={this.handleChangeJobReve}/> 
+        <div>Votre adresse dans le composant Parent {this.state.longitudeDepart} et {this.state.latitudeDepart}</div>
+        <VotreAdresse long={this.state.longitudeDepart} lat={this.state.latitudeDepart} handleLiftCoordDepart={this.handleLiftCoordDepart}/>
         <VotreTempsTrajet handleTempsTrajetMax={this.handleTempsTrajetMax}/>
         <ChoixContrat selectCDI={this.state.selectCDI} handleCDI={this.handleCDI} selectCDD={this.state.selectCDD} handleCDD={this.handleCDD} selectINTERIM={this.state.selectINTERIM} handleINTERIM={this.handleINTERIM} selectApprenti={this.state.selectApprenti} handleApprenti={this.handleApprenti}/>
-        <BoutonValider userKeyWord={this.state.userKeyWord} tempsTrajetMax={this.state.tempsTrajetMax} selectCDI={this.state.selectCDI} selectCDD={this.state.selectCDD} selectINTERIM={this.state.selectINTERIM} selectApprenti={this.state.selectApprenti}/>  
+        <BoutonValider userKeyWord={this.state.userKeyWord} tempsTrajetMax={this.state.tempsTrajetMax} selectCDI={this.state.selectCDI} selectCDD={this.state.selectCDD} selectINTERIM={this.state.selectINTERIM} selectApprenti={this.state.selectApprenti} longitudeDepart={this.state.longitudeDepart} latitudeDepart={this.state.latitudeDepart}/>  
 
       </div>
     );

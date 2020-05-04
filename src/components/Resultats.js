@@ -2,6 +2,7 @@ import React from 'react'
 import axios from "axios"
 import SearchResults from './SearchResults'
 import BackButton from './BackButton'
+import NavitiaTime from "./APINavitiaTime.js";
 import Loader from "./Loader"
 
 
@@ -9,11 +10,15 @@ import Loader from "./Loader"
 class Resultats extends React.Component {
     state = {
         jobOffers: [],
-        token: "no token",
-        jobKeyWord: "",
-        contractChoice: "",
-        natureContratChoice: "",
-        loaded: false
+        token : "no token",
+        jobKeyWord:"",
+        contractChoice:"",
+        natureContratChoice:"",
+        loaded: false,
+        longitudeDepart:this.props.location.data.longitudeDepart,//2.3350427 
+        latitudeDepart:this.props.location.data.latitudeDepart,//48.8108749
+        longitudeArrivee:2.3350427,
+        latitudeArrivee:48.8108749
     };
 
     getTokenPE = () => {
@@ -79,18 +84,21 @@ class Resultats extends React.Component {
       }
     
 
+
     render() {
           //console.log(`props temps trajet max :${this.props.location.data.tempsTrajetMax}`)
           //console.log(this.state.jobOffers[0])
         return (
             <div>
                 <BackButton />
+                {/* <NavitiaTime longitudeDepart={this.state.longitudeDepart} latitudeDepart={this.state.latitudeDepart} longitudeArrivee={this.state.longitudeArrivee} latitudeArrivee={this.state.latitudeArrivee} /> */}
                 <div>
                     {!this.state.loaded ? (<Loader />) : (
                        this.state.jobOffers.length > 0 ?  (
                         <div>{this.state.jobOffers.map(offer => (
-                            <div key={offer.id}>
-                                <SearchResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise !== undefined && offer.entreprise.nom} contractType={offer.typeContrat} contractNature={offer.natureContrat}/>
+                            <div key={offer.id}>                                                                      
+                                <SearchResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise !== undefined && offer.entreprise.nom} contractType={offer.typeContrat} contractNature={offer.natureContrat} longitudeDepart={this.state.longitudeDepart} latitudeDepart={this.state.latitudeDepart} longitudeArrivee={offer.lieuTravail.longitude} latitudeArrivee={offer.lieuTravail.latitude}/>
+                                {/* <NavitiaTime longitudeDepart={this.state.longitudeDepart} latitudeDepart={this.state.latitudeDepart} longitudeArrivee={offer.lieuTravail.longitude} latitudeArrivee={offer.lieuTravail.latitude} /> */}
                                 <p>{offer.lieuTravail.codePostal}</p>
                                 <p>{offer.lieuTravail.latitude}</p>
                                 <p>{offer.lieuTravail.longitude}</p>
@@ -103,11 +111,10 @@ class Resultats extends React.Component {
                         )
                      )
                     }
-                </div>
-            </div>
-        );
-    }
-    
-}
+                                       
+                    )}         
+           
+};
+
 
 export default Resultats

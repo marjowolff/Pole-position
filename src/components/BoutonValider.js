@@ -19,6 +19,8 @@ class BoutonValider extends React.Component {
                         selectINTERIM :this.props.selectINTERIM,
                         selectApprenti :this.props.selectApprenti,
                         tempsTrajetMax :this.props.tempsTrajetMax,
+                        longitudeDepart :this.props.longitudeDepart,
+                        latitudeDepart :this.props.latitudeDepart,
                     }}}
                 
                     className="Path">
