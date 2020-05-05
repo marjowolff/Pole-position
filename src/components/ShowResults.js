@@ -1,11 +1,9 @@
 import React from 'react'
 import SearchResults from './SearchResults'
-
+import { FaBus } from 'react-icons/fa'
 
 
 class ShowResults extends React.Component {
-
-
 
     state = {
         transports: [],
@@ -19,7 +17,7 @@ class ShowResults extends React.Component {
       };
     
       getTransportationTime = () => {
-        const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${this.props.longitudeDepart};${this.props.latitudeDepart}&to=${this.props.longitudeArrivee};${this.props.latitudeArrivee}&key=${this.state.token}`;
+        const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${this.props.longitudeDepart};${this.props.latitudeDepart}&to=${this.props.jobOffers[0].lieuTravail.longitude};${this.props.jobOffers[0].lieuTravail.latitude}&key=${this.state.token}`;
         fetch(url)
           .then((res) => res.json())
           .then((res) => this.setState({ transports: res, isloaded: true }))
@@ -31,17 +29,45 @@ class ShowResults extends React.Component {
           });
       };
 
+      getTabResult = () => {
+        const tabOffers = this.props.jobOffers
+        console.log(tabOffers)
+
+        for (let i =0; i < tabOffers.length ; i++){
+              console.log(tabOffers[i].lieuTravail.longitude)
+              console.log(tabOffers[i].lieuTravail.latitude)
+            
+            let navResult =  []
+
+            const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${this.props.longitudeDepart};${this.props.latitudeDepart}&to=${tabOffers[i].lieuTravail.longitude};${tabOffers[i].lieuTravail.latitude}&key=${this.state.token}`;
+            ( fetch(url)
+            .then((res) => res.json()))
+
+            //.then((res) => console.log(res))
+            //.then((res) => navResult = res)
+            
+
+            //  .then((res) => navResult = res)
+            //  console.log(navResult)
+              
+            // console.log(navResult)
+            console.log("test fin boucle")
+
+        }
+      }
+
       componentDidMount() {
-      
-           this.getTransportationTime();
+              this.getTabResult();
+           //this.getTransportationTime();
       
         }
 
     render (){
-
+            //console.log(this.props)
+            //console.log("test Show Results")
         return (
              <div>
-                 {this.state.jobOffers.map(offer => (
+                 {this.props.jobOffers.map(offer => (
                  <div key={offer.id}>                                                                      
                     <SearchResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise !== undefined && offer.entreprise.nom} contractType={offer.typeContrat} contractNature={offer.natureContrat} longitudeDepart={this.state.longitudeDepart} latitudeDepart={this.state.latitudeDepart} longitudeArrivee={offer.lieuTravail.longitude} latitudeArrivee={offer.lieuTravail.latitude} liftDuration={this.liftDuration}/>
                     

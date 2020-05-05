@@ -18,9 +18,9 @@ class NavitiaTime extends React.Component {
     fetch(url)
       .then((res) => res.json())
       .then((res) => this.setState({ transports: res, isloaded: true }))
-      .then((res) => console.log(this.state.transports))
+     .then((res) => console.log(this.state.transports))
       .then((res) => {
-        this.setState({
+       this.setState({
           duration: Math.round(this.state.transports.journeys[0].duration / 60),
         });
       });

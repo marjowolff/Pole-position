@@ -2,7 +2,7 @@ import React from 'react'
 import axios from "axios"
 import SearchResults from './SearchResults'
 import BackButton from './BackButton'
-import ShowResults from './SearchResults';
+import ShowResults from './ShowResults';
 import Loader from "./Loader"
 
 
