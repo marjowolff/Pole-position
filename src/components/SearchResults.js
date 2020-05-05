@@ -24,7 +24,7 @@ class SearchResults extends React.Component {
                         <p><IoMdBriefcase />{this.props.contractNature}</p> : <p><IoMdBriefcase />{this.props.contractType}</p>}
                     </div>
                     {/* <p id="FaBus"><FaBus /> 20 min</p> */}
-                    <NavitiaTime longitudeDepart={this.props.longitudeDepart} latitudeDepart={this.props.latitudeDepart} longitudeArrivee={this.props.longitudeArrivee} latitudeArrivee={this.props.latitudeArrivee} />
+                    <NavitiaTime longitudeDepart={this.props.longitudeDepart} latitudeDepart={this.props.latitudeDepart} longitudeArrivee={this.props.longitudeArrivee} latitudeArrivee={this.props.latitudeArrivee} liftDuration={this.props.liftDuration}/>
                     <button className="cardButton">Voir l'offre</button>
                     
                 </div>

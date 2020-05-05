@@ -31,7 +31,15 @@ class NavitiaTime extends React.Component {
   //   const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${this.props.longitudeDepart};${this.props.latitudeDepart}&to=${this.props.longitudeArrivee};${this.props.latitudeArrivee}&key=${this.state.token}`;
   //  console.log(url)
      this.getTransportationTime();
+
+      
+
   }
+  //componentDidUpdate(){
+    //if (this.state.isloaded){
+      //console.log(`durée dans navitia time ${this.state.duration}`)
+   //this.props.liftDuration()}
+  //}
 
   render() {
     return (
@@ -62,6 +70,7 @@ class NavitiaTime extends React.Component {
           //   </p>
           // </h1>
           <p id="FaBus"><FaBus /> {this.state.duration} min </p>
+          
         )}
       </div>
     );
