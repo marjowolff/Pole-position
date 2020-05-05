@@ -16,6 +16,7 @@ class ShowResults extends React.Component {
         latitudeArrivee: this.props.latitudeArrivee,
         navResult:{},
         tabDuration:[],
+        tabOffersWithDuration:[]
       };
     
       getTransportationTime = () => {
@@ -33,7 +34,7 @@ class ShowResults extends React.Component {
 
       getTabDuration = () => {
         const tabOffers = this.props.jobOffers
-        console.log(tabOffers)
+        //console.log(tabOffers)
 
         let tabDur = []
 
@@ -46,39 +47,46 @@ class ShowResults extends React.Component {
             ( fetch(url)
             .then((res) => res.json())
             .then((res) => this.setState({ navResult : Math.round( res.journeys[0].duration / 60)}) )
-            .then((res) => console.log(this.state.navResult))
+            //.then((res) => console.log(this.state.navResult))
             .then((res) =>  {
-              tabDur.push(this.state.navResult)
-              console.log(`tabDur : ${tabDur}`)
+              tabOffers[i].tempsTrajet = this.state.navResult
+              //tabDur.push(this.state.navResult)
+              //console.log(`tabDur : ${tabDur}`)
             })
+            //.then((res) => {
+              //tabOffers[i].tempsTrajet = tabDur[i]
+             // console.log(tabOffers)
+           // })
             )
             console.log("test fin boucle")
         }
-        this.setState({ tabDuration : tabDur })
+       // console.log(`tabDur final !!!!! : ${tabDur}`)
+        this.setState({ tabOffersWithDuration : tabOffers })
       }
 
-      getResultTab = () => {
-        // if state tabDuration = this.props.jobOffers.length
-      }
+ 
 
       componentDidMount() {
               this.getTabDuration();
+              
            //this.getTransportationTime();
+       }
       
-        }
+   
 
     render (){
             //console.log(this.props)
             //console.log("test Show Results")
-            console.log(`le state tabDur ${this.state.tabDuration}`)
+            console.log(this.props.jobOffers)
+           // console.log(this.state.tabOffersWithDuration)
         return (
              <div>
-                 {this.props.jobOffers.map(offer => (
+                 {this.state.tabOffersWithDuration.map(offer => (
                  <div key={offer.id}>                                                                      
                     <SearchResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise !== undefined && offer.entreprise.nom} contractType={offer.typeContrat} contractNature={offer.natureContrat} longitudeDepart={this.state.longitudeDepart} latitudeDepart={this.state.latitudeDepart} longitudeArrivee={offer.lieuTravail.longitude} latitudeArrivee={offer.lieuTravail.latitude} liftDuration={this.liftDuration}/>
                     
                 <p>{offer.lieuTravail.codePostal}</p>
-                <p id="FaBus"><FaBus /> {this.state.duration} min </p>
+                <p id="FaBus"><FaBus /> {offer.tempsTrajet} min </p>
                 </div>
              ))
                
