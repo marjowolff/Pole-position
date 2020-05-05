@@ -14,6 +14,8 @@ class ShowResults extends React.Component {
         latitudeDepart: this.props.latitudeDepart,
         longitudeArrivee: this.props.longitudeArrivee,
         latitudeArrivee: this.props.latitudeArrivee,
+        navResult:{},
+        tabDuration:[],
       };
     
       getTransportationTime = () => {
@@ -29,35 +31,38 @@ class ShowResults extends React.Component {
           });
       };
 
-      getTabResult = () => {
+      getTabDuration = () => {
         const tabOffers = this.props.jobOffers
         console.log(tabOffers)
+
+        let tabDur = []
 
         for (let i =0; i < tabOffers.length ; i++){
               console.log(tabOffers[i].lieuTravail.longitude)
               console.log(tabOffers[i].lieuTravail.latitude)
-            
-            let navResult =  []
+
 
             const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${this.props.longitudeDepart};${this.props.latitudeDepart}&to=${tabOffers[i].lieuTravail.longitude};${tabOffers[i].lieuTravail.latitude}&key=${this.state.token}`;
             ( fetch(url)
-            .then((res) => res.json()))
-
-            //.then((res) => console.log(res))
-            //.then((res) => navResult = res)
-            
-
-            //  .then((res) => navResult = res)
-            //  console.log(navResult)
-              
-            // console.log(navResult)
+            .then((res) => res.json())
+            .then((res) => this.setState({ navResult : Math.round( res.journeys[0].duration / 60)}) )
+            .then((res) => console.log(this.state.navResult))
+            .then((res) =>  {
+              tabDur.push(this.state.navResult)
+              console.log(`tabDur : ${tabDur}`)
+            })
+            )
             console.log("test fin boucle")
-
         }
+        this.setState({ tabDuration : tabDur })
+      }
+
+      getResultTab = () => {
+        // if state tabDuration = this.props.jobOffers.length
       }
 
       componentDidMount() {
-              this.getTabResult();
+              this.getTabDuration();
            //this.getTransportationTime();
       
         }
@@ -65,6 +70,7 @@ class ShowResults extends React.Component {
     render (){
             //console.log(this.props)
             //console.log("test Show Results")
+            console.log(`le state tabDur ${this.state.tabDuration}`)
         return (
              <div>
                  {this.props.jobOffers.map(offer => (
