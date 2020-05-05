@@ -1,6 +1,6 @@
 import React from "react";
 
-class Navitia extends React.Component {
+class NavitiaAdresse extends React.Component {
   state = {
     transports: [],
     isloaded: false,
@@ -31,6 +31,7 @@ class Navitia extends React.Component {
 
   render() {
     return (
+      
       <div>
         {!this.state.isloaded ? (
           <div>Loading ...</div>
@@ -41,7 +42,7 @@ class Navitia extends React.Component {
             <p> Votre Latitude : {this.state.latitude}</p>
             <p>
               {" "}
-              Votre Adresse de départ :{" "}
+              Votre Adresse géolocalisée :{" "}
               {this.state.transports.journeys[0].sections[0].from.address.label}
             </p>
             <p>
@@ -61,4 +62,4 @@ class Navitia extends React.Component {
   }
 }
 
-export default Navitia;
+export default NavitiaAdresse;

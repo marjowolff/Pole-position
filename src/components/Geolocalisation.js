@@ -1,5 +1,6 @@
 import React from "react";
-import Navitia from "./APINavitia.js";
+import NavitiaAdresse from "./APINavitia.js";
+
 
 const erreur = (error) => {
   switch (error.code) {
@@ -17,9 +18,9 @@ const erreur = (error) => {
 
 class Geolocalisation extends React.Component {
   state = {
-    longitude: 2.0,
+    longitudeDepart: 2.0,
     latitude: 48.8106958,
-    longitudeArrivee: 2.2922926,
+    longitude: 2.2922926,
     latitudeArrivee: 48.8583736,
     loaded: false,
   };
@@ -30,6 +31,9 @@ class Geolocalisation extends React.Component {
       var lng = position.coords.longitude;
       console.log(lat, lng);
       this.setState({ longitude: lng, latitude: lat, loaded: true });
+      this.props.handleCoordDepart(lng,lat);
+      
+      
     };
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(callback, erreur);
@@ -38,6 +42,8 @@ class Geolocalisation extends React.Component {
 
   componentDidMount() {
     this.getGeolocalisation();
+    
+    // handleCoordDepart()
   }
 
   render() {
@@ -47,7 +53,7 @@ class Geolocalisation extends React.Component {
           <div>Loading ...</div>
         ) : (
           <div>
-            <Navitia
+            <NavitiaAdresse
               longitude={this.state.longitude}
               latitude={this.state.latitude}
             />
