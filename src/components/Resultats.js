@@ -96,7 +96,7 @@ class Resultats extends React.Component {
                     {!this.state.loaded ? (<Loader />) : (
                        
                        this.state.jobOffers.length > 0 ?  (
-                            <ShowResults jobOffers={this.state.jobOffers} longitudeDepart={this.props.location.data.longitudeDepart} latitudeDepart={this.props.location.data.latitudeDepart}/>
+                            <ShowResults jobOffers={this.state.jobOffers} longitudeDepart={this.props.location.data.longitudeDepart} latitudeDepart={this.props.location.data.latitudeDepart} tempsTrajetMax={this.props.location.data.tempsTrajetMax}/>
                                
                                 
                                        ) : (

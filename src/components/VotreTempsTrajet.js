@@ -10,12 +10,12 @@ class VotreTempsTrajet extends Component {
             </div>
             <div className="tempsTrajetSelect">
                 <select name="tempsTrajet" id="tempsTrajet" onChange={this.props.handleTempsTrajetMax}>
-                    <option value="aucuneImportance">--aucune importance--</option>
-                    <option value="20min"> &lt; 20 min</option>
-                    <option value="30min"> &lt; 30 min</option>
-                    <option value="45min"> &lt; 45 min</option>
-                    <option value="1h"> &lt; 1h</option>
-                    <option value="1h15"> &lt; 1h 15</option>
+                    <option value="1000000000000">--aucune importance--</option>
+                    <option value="20"> &lt; 20 min</option>
+                    <option value="30"> &lt; 30 min</option>
+                    <option value="45"> &lt; 45 min</option>
+                    <option value="60"> &lt; 1h</option>
+                    <option value="75"> &lt; 1h 15</option>
                 </select>
             </div>
             </div>
