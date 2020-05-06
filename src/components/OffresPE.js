@@ -1,13 +1,12 @@
 import React from 'react'
 import axios from "axios"
-import SearchResults from './SearchResults'
 import BackButton from './BackButton'
-import ShowResults from './ShowResults';
+import TempsTrajetNavitia from './TempsTrajetNavitia';
 import Loader from "./Loader"
 
 
 
-class Resultats extends React.Component {
+class OffresPE extends React.Component {
     state = {
         jobOffers: [],
         token : "no token",
@@ -33,6 +32,8 @@ class Resultats extends React.Component {
             .then(res => this.setState({ token: res.data.access_token }, () => { this.getJobOffers() }))
 
     };
+
+    // https://cors-anywhere.herokuapp.com/
 
     getJobOffers = () => {
         axios({
@@ -96,7 +97,7 @@ class Resultats extends React.Component {
                     {!this.state.loaded ? (<Loader />) : (
                        
                        this.state.jobOffers.length > 0 ?  (
-                            <ShowResults jobOffers={this.state.jobOffers} longitudeDepart={this.props.location.data.longitudeDepart} latitudeDepart={this.props.location.data.latitudeDepart} tempsTrajetMax={this.props.location.data.tempsTrajetMax}/>
+                            <TempsTrajetNavitia jobOffers={this.state.jobOffers} longitudeDepart={this.props.location.data.longitudeDepart} latitudeDepart={this.props.location.data.latitudeDepart} tempsTrajetMax={this.props.location.data.tempsTrajetMax}/>
                                
                                 
                                        ) : (
@@ -118,4 +119,4 @@ class Resultats extends React.Component {
 };
 
 
-export default Resultats
+export default OffresPE

@@ -1,78 +1,37 @@
 import React from 'react'
-import SearchResults from './SearchResults'
+import { FaBuilding } from 'react-icons/fa'
+import { FaBus } from 'react-icons/fa'
+import { GoLocation } from 'react-icons/go'
+import { IoMdBriefcase } from 'react-icons/io'
+import './SearchResults.css';
+
 
 
 
 class ShowResults extends React.Component {
-
-    state = {
-       // transports: [],
-        //isloaded: false,
-       // duration: 0,
-        token: "b0b9e3a3-8f64-4941-8ba7-b62b78071d18",
-        longitudeDepart: this.props.longitudeDepart,
-        latitudeDepart: this.props.latitudeDepart,
-        longitudeArrivee: this.props.longitudeArrivee,
-        latitudeArrivee: this.props.latitudeArrivee,
-        navResult:{},
-        //tabDuration:[],
-        tabOffersWithDuration:[],
-        tempsTrajetMax: this.props.tempsTrajetMax,
-      };
     
 
-      getTabDuration = () => {
-        const tabOffers = this.props.jobOffers
-        //console.log(tabOffers)
-
-        for (let i =0; i < tabOffers.length ; i++){
-              //console.log(tabOffers[i].lieuTravail.longitude)
-              //console.log(tabOffers[i].lieuTravail.latitude)
-
-
-            const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${this.props.longitudeDepart};${this.props.latitudeDepart}&to=${tabOffers[i].lieuTravail.longitude};${tabOffers[i].lieuTravail.latitude}&key=${this.state.token}`;
-            ( fetch(url)
-            .then((res) => res.json())
-            .then((res) => this.setState({ navResult : Math.round( res.journeys[0].duration / 60)}) )
-            //.then((res) => console.log(this.state.navResult))
-            .then((res) =>  {
-              tabOffers[i].tempsTrajet = this.state.navResult  
-            })
-            .then((res)=> this.setState({ tabOffersWithDuration : tabOffers }))
-            )
-            //console.log("test fin boucle")
-        }
-       // this.setState({ tabOffersWithDuration : tabOffers })
-      }
-
- 
-      componentDidMount() {
-              this.getTabDuration();
-              
-       }
-      
-   
-
-    render (){
-            //console.log(this.props)
-            //console.log(this.props.jobOffers)
-           // console.log(this.state.tabOffersWithDuration)
-           //console.log(this.state.tempsTrajetMax)
+    render () {
         return (
-             <div>
-                 {this.state.tabOffersWithDuration.filter(offer => (offer.tempsTrajet < this.state.tempsTrajetMax )).map(offer => (
-                 <div key={offer.id}>                                                                      
-                    <SearchResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise !== undefined && offer.entreprise.nom} contractType={offer.typeContrat} contractNature={offer.natureContrat} tempsTrajet={offer.tempsTrajet}/>
+            <div>
+                <div className="card">
+                    <h2>{this.props.title}</h2>
+                    <div className="cardSeparator">
+                        {this.props.company ? 
+                        <p><FaBuilding />{this.props.company}</p> : <p><FaBuilding />Entreprise non renseignée</p>}
+                        <p><GoLocation /> {this.props.city}</p>
+                        {this.props.contractNature === "Contrat apprentissage" ?
+                        <p><IoMdBriefcase />{this.props.contractNature}</p> : <p><IoMdBriefcase />{this.props.contractType}</p>}
+                        <p id="FaBus"><FaBus /> {this.props.tempsTrajet} min </p>
+                    </div>
+                    {/* <p id="FaBus"><FaBus /> 20 min</p> */}
+                    { /*  <NavitiaTime longitudeDepart={this.props.longitudeDepart} latitudeDepart={this.props.latitudeDepart} longitudeArrivee={this.props.longitudeArrivee} latitudeArrivee={this.props.latitudeArrivee} liftDuration={this.props.liftDuration}/>*/}
+                    <button className="cardButton">Voir l'offre</button>
+                    
                 </div>
-             ))
-               
-             }
-             </div>
-    
-             )
+            </div>
+        )
     }
-
 }
-
 
 export default ShowResults

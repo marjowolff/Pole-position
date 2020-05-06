@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Navigation from './components/Navigation'
-import Resultats from './components/Resultats';
+import OffresPE from './components/OffresPE';
 
 import Recherche from './components/Recherche'
 import { Switch, Route } from 'react-router-dom';
@@ -14,7 +14,7 @@ class App extends React.Component {
           <Navigation />
           <Switch>
             <Route exact path="/" component={Recherche}/>
-            <Route path="/resultats" component={Resultats}/>
+            <Route path="/resultats" component={OffresPE}/>
           </Switch>
           </div>
       
