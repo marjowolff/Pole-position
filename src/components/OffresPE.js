@@ -39,8 +39,8 @@ class OffresPE extends React.Component {
         axios({
             method: 'get',
             url: 'https://api.emploi-store.fr/partenaire/offresdemploi/v2/offres/search',
-           // headers: { Authorization: `Bearer ${this.state.token}` },
-            headers: { Authorization: `Bearer 34d8e26b-e9b9-4397-8be3-584e9dcd7a6a` },
+            headers: { Authorization: `Bearer ${this.state.token}` },
+            //headers: { Authorization: `Bearer 34d8e26b-e9b9-4397-8be3-584e9dcd7a6a` },
            
             params: {
                 motsCles: this.state.jobKeyWord,
@@ -82,8 +82,8 @@ class OffresPE extends React.Component {
         this.handleKeyWords()
         this.handleContractChoice()
         this.handleNatureContrat() 
-        //this.getTokenPE()  
-        this.getJobOffers()
+        this.getTokenPE()  
+        //this.getJobOffers()
       }
     
 

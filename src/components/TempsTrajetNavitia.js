@@ -15,8 +15,8 @@ class TempsTrajetNavitia extends React.Component {
 
   getTabDuration = () => {
     const tabOffers = this.props.jobOffers;
-    const longDepart = this.props.longitudeDepart;
-    const latDepart = this.props.latitudeDepart;
+    let longDepart = this.props.longitudeDepart;
+    let latDepart = this.props.latitudeDepart;
     //console.log(tabOffers)
 
     for (let i = 0; i < tabOffers.length; i++) {
@@ -28,17 +28,15 @@ class TempsTrajetNavitia extends React.Component {
         longArrivee !== undefined &&
         latArrivee !== undefined
       ) {
-        /*if(longDepart === undefined || latDepart === undefined ){
+         if(longDepart == "2.0" || latDepart == "48.0" ){
           console.log("test")
-          longDepart = 2.3
-          latDepart = 48.75
-        } */
+          longDepart = 2.34; // si pas de géoloc ou d'adresse fournie, lat et long par défaut de paris centre
+          latDepart = 48.85;
+          } 
         console.log(`long depart : ${longDepart}, lat depart :${latDepart}, long arrivée :${longArrivee},lat arrivée : ${latArrivee}`)
         const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${longDepart};${latDepart}&to=${longArrivee};${latArrivee}&key=${this.state.token}`;
-                 //`https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${this.props.longitudeDepart};${this.props.latitudeDepart}&to=${this.props.longitudeArrivee};${this.props.latitudeArrivee}&key=${this.state.token}`
         fetch(url)
           .then((res) => res.json())
-          .then((res) => console.log(res))
           .then((res) =>
             this.setState({
               navResult: Math.round(res.journeys[0].duration / 60),
