@@ -12,6 +12,7 @@ class ShowResults extends React.Component {
     
 
     render () {
+        console.log(this.props.lienOffrePE)
         return (
             <div>
                 <div className="card">
@@ -26,7 +27,7 @@ class ShowResults extends React.Component {
                     </div>
                     {/* <p id="FaBus"><FaBus /> 20 min</p> */}
                     { /*  <NavitiaTime longitudeDepart={this.props.longitudeDepart} latitudeDepart={this.props.latitudeDepart} longitudeArrivee={this.props.longitudeArrivee} latitudeArrivee={this.props.latitudeArrivee} liftDuration={this.props.liftDuration}/>*/}
-                    <button className="cardButton">Voir l'offre</button>
+                    <a href={this.props.lienOffrePE} target="blanck" ><button className="cardButton">Voir l'offre</button></a>
                     
                 </div>
             </div>

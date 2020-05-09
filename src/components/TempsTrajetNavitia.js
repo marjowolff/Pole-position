@@ -54,7 +54,7 @@ class TempsTrajetNavitia extends React.Component {
       // });
 
     render (){
-            //console.log(this.props)
+            console.log(this.state.tabOffersWithDuration)
             //console.log(this.props.jobOffers)
            // console.log(this.state.tabOffersWithDuration)
            //console.log(this.state.tempsTrajetMax)
@@ -62,7 +62,7 @@ class TempsTrajetNavitia extends React.Component {
              <div>
                  {this.state.tabOffersWithDuration.filter(offer => (offer.tempsTrajet < this.state.tempsTrajetMax )).sort(( a , b)=>(a.tempsTrajet-b.tempsTrajet)).map(offer => (
                  <div key={offer.id}>                                                                      
-                    <ShowResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise !== undefined && offer.entreprise.nom} contractType={offer.typeContrat} contractNature={offer.natureContrat} tempsTrajet={offer.tempsTrajet}/>
+                    <ShowResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise !== undefined && offer.entreprise.nom} contractType={offer.typeContrat} contractNature={offer.natureContrat} tempsTrajet={offer.tempsTrajet} lienOffrePE={offer.origineOffre.urlOrigine}/>
                 </div>
              ))
                
