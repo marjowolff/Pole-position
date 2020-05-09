@@ -6,16 +6,13 @@ import ShowResults from './ShowResults'
 class TempsTrajetNavitia extends React.Component {
 
     state = {
-       // transports: [],
-        //isloaded: false,
-       // duration: 0,
+       
         token: "b0b9e3a3-8f64-4941-8ba7-b62b78071d18",
         longitudeDepart: this.props.longitudeDepart,
         latitudeDepart: this.props.latitudeDepart,
         longitudeArrivee: this.props.longitudeArrivee,
         latitudeArrivee: this.props.latitudeArrivee,
         navResult:{},
-        //tabDuration:[],
         tabOffersWithDuration:[],
         tempsTrajetMax: this.props.tempsTrajetMax,
       };
@@ -51,7 +48,10 @@ class TempsTrajetNavitia extends React.Component {
               
        }
       
-   
+      // var nombres = [4, 2, 5, 1, 3];
+      // nombres.sort(function(a, b) {
+     //    return a - b;
+      // });
 
     render (){
             //console.log(this.props)
@@ -60,7 +60,7 @@ class TempsTrajetNavitia extends React.Component {
            //console.log(this.state.tempsTrajetMax)
         return (
              <div>
-                 {this.state.tabOffersWithDuration.filter(offer => (offer.tempsTrajet < this.state.tempsTrajetMax )).map(offer => (
+                 {this.state.tabOffersWithDuration.filter(offer => (offer.tempsTrajet < this.state.tempsTrajetMax )).sort(( a , b)=>(a.tempsTrajet-b.tempsTrajet)).map(offer => (
                  <div key={offer.id}>                                                                      
                     <ShowResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise !== undefined && offer.entreprise.nom} contractType={offer.typeContrat} contractNature={offer.natureContrat} tempsTrajet={offer.tempsTrajet}/>
                 </div>
