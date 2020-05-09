@@ -90,7 +90,7 @@ class OffresPE extends React.Component {
 
     render() {
           //console.log(`props temps trajet max :${this.props.location.data.tempsTrajetMax}`)
-          //console.log(this.state.jobOffers[0])
+          console.log(this.state.jobOffers)
           
         return (
             <div>
