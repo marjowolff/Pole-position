@@ -12,7 +12,7 @@ class ShowResults extends React.Component {
     
 
     render () {
-        console.log(this.props.lienOffrePE)
+        //console.log(this.props.lienOffrePE)
         return (
             <div>
                 <div className="card">
