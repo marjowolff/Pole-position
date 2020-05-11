@@ -28,7 +28,28 @@
 #FaBus {
     align-self:center;
     margin-top:10px;
-    color:red;
+    
+}
+
+.inf20{
+    color : #19b001;
+}
+
+.inf30{
+    color : #24fc02;
+}
+
+.inf45{
+    color :#fccc02; /*#e2b701*/
+}
+.inf60{
+    color :#fc9902 ; /* #e28901*/
+}
+.inf75{
+    color :#FC0202;
+}
+.sup75{
+    color:#970101;
 }
 
 h2 {
