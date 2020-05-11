@@ -49,11 +49,6 @@ class VotreAdresse extends Component {
           .then((res) => console.log('getGPSCoordintaes',this.state.addressNavitia))
           .then((res) => this.liftGPSCoordinates())
         
-        //   .then((res) => {
-        //     this.setState({
-        //       duration: Math.round(this.state.transports.journeys[0].duration / 60),
-        //     });
-        //   });
       };
 
     
