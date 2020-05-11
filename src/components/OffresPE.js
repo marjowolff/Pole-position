@@ -1,13 +1,12 @@
 import React from 'react'
 import axios from "axios"
-import SearchResults from './SearchResults'
 import BackButton from './BackButton'
-import NavitiaTime from "./APINavitiaTime.js";
+import TempsTrajetNavitia from './TempsTrajetNavitia';
 import Loader from "./Loader"
 
 
 
-class Resultats extends React.Component {
+class OffresPE extends React.Component {
     state = {
         jobOffers: [],
         token : "no token",
@@ -15,10 +14,11 @@ class Resultats extends React.Component {
         contractChoice:"",
         natureContratChoice:"",
         loaded: false,
-        longitudeDepart:this.props.location.data.longitudeDepart,//2.3350427 
-        latitudeDepart:this.props.location.data.latitudeDepart,//48.8108749
+        longitudeDepart:this.props.location.data.longitudeDepart, //2.3350427 
+        latitudeDepart:this.props.location.data.latitudeDepart, //48.8108749
         longitudeArrivee:2.3350427,
-        latitudeArrivee:48.8108749
+        latitudeArrivee:48.8108749,
+        offerDuration:0
     };
 
     getTokenPE = () => {
@@ -33,17 +33,21 @@ class Resultats extends React.Component {
 
     };
 
+    // https://cors-anywhere.herokuapp.com/
+
     getJobOffers = () => {
         axios({
             method: 'get',
             url: 'https://api.emploi-store.fr/partenaire/offresdemploi/v2/offres/search',
             headers: { Authorization: `Bearer ${this.state.token}` },
+            //headers: { Authorization: `Bearer 34d8e26b-e9b9-4397-8be3-584e9dcd7a6a` },
+           
             params: {
                 motsCles: this.state.jobKeyWord,
                 commune: 75118,
                 typeContrat: this.state.contractChoice,
                 natureContrat: this.state.natureContratChoice,
-                range: "0-10"
+                //range: "0-10"
             }
         })
             .then(res => this.setState({ jobOffers: res.data.resultats, loaded: true }))
@@ -73,36 +77,49 @@ class Resultats extends React.Component {
             this.setState({ natureContratChoice: "E2" })
         }
     }
-
-
-
+     
     componentDidMount() {
         this.handleKeyWords()
         this.handleContractChoice()
-        this.handleNatureContrat()
-        this.getTokenPE()
-    }
+        this.handleNatureContrat() 
+        this.getTokenPE()  
+        //this.getJobOffers()
+      }
+    
 
 
     render() {
+          //console.log(`props temps trajet max :${this.props.location.data.tempsTrajetMax}`)
+          console.log(this.state.jobOffers)
+          
         return (
             <div>
                 <BackButton />
                 {/* <NavitiaTime longitudeDepart={this.state.longitudeDepart} latitudeDepart={this.state.latitudeDepart} longitudeArrivee={this.state.longitudeArrivee} latitudeArrivee={this.state.latitudeArrivee} /> */}
                 <div>
                     {!this.state.loaded ? (<Loader />) : (
-                        <div>{this.state.jobOffers.map(offer => (
-                            <div key={offer.id}>
-                                <SearchResults title={offer.intitule} city={offer.lieuTravail.libelle} company={offer.entreprise !== undefined && offer.entreprise.nom} contractType={offer.typeContrat} longitudeDepart={this.state.longitudeDepart} latitudeDepart={this.state.latitudeDepart} longitudeArrivee={offer.lieuTravail.longitude} latitudeArrivee={offer.lieuTravail.latitude}/>
-                                {/* <NavitiaTime longitudeDepart={this.state.longitudeDepart} latitudeDepart={this.state.latitudeDepart} longitudeArrivee={offer.lieuTravail.longitude} latitudeArrivee={offer.lieuTravail.latitude} /> */}
-                            </div>
-                        ))}</div>
-                    )}
+                       
+                       this.state.jobOffers.length > 0 ?  (
+                            <TempsTrajetNavitia jobOffers={this.state.jobOffers} longitudeDepart={this.props.location.data.longitudeDepart} latitudeDepart={this.props.location.data.latitudeDepart} tempsTrajetMax={this.props.location.data.tempsTrajetMax}/>
+                               
+                                
+                                       ) : (
+                                        <div>
+                                             <p>Aucune offre ne correspond à votre recherche</p>
+                                        </div>
+                                    )
+                               
+                       
+                        
+                       
+                     )
+                    }
 
                 </div>
-            </div>
-        );
-    }
-}
+            </div>                  
+        )}         
+           
+};
 
-export default Resultats
+
+export default OffresPE
