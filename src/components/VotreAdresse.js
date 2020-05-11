@@ -28,13 +28,27 @@ class VotreAdresse extends Component {
         this.setState({ address: e.target.value })
     }
 
+    liftGPSCoordinates = () => {
+        console.log('Lift',this.state.addressNavitia.places)
+        if (this.state.addressNavitia.places[0].embedded_type==='stop_area') {var lat = this.state.addressNavitia.places[0].stop_area.coord.lat;
+            var lng = this.state.addressNavitia.places[0].stop_area.coord.lon;
+            } else if (this.state.addressNavitia.places[0].embedded_type==='address') {var lat = this.state.addressNavitia.places[0].address.coord.lat;
+                var lng = this.state.addressNavitia.places[0].address.coord.lon;
+                }
+        console.log(lat, lng);
+        this.setState({ longitude: lng, latitude: lat });
+        this.props.handleLiftCoordDepart(lng,lat)
+    }
+
     getGPSCoordinates = () => {
         //https://api.navitia.io/v1/coverage/fr-idf/places?q=deffand&key=b0b9e3a3-8f64-4941-8ba7-b62b78071d18
         const url = `https://api.navitia.io/v1/coverage/fr-idf/places?q=${this.state.address}&key=${this.state.token}`;
         fetch(url)
           .then((res) => res.json())
           .then((res) => this.setState({ addressNavitia: res, isloadedGPS: true }))
-          .then((res) => console.log(this.state.addressNavitia))
+          .then((res) => console.log('getGPSCoordintaes',this.state.addressNavitia))
+          .then((res) => this.liftGPSCoordinates())
+        
         //   .then((res) => {
         //     this.setState({
         //       duration: Math.round(this.state.transports.journeys[0].duration / 60),
@@ -78,7 +92,7 @@ class VotreAdresse extends Component {
                 {this.state.isloadedGPS && this.state.addressNavitia.places[0].embedded_type=='stop_area' ? 
                     <div>
                         <p>Votre adresse actuelle {this.state.addressNavitia.places[0].name}</p>
-                        <p>Vos coordonnées GPS Latitude : {this.state.addressNavitia.places[0].stop_area.coord.lat} Longitude : {this.state.addressNavitia.places[0].stop_area.coord.lont}</p>
+                        <p>Vos coordonnées GPS Latitude : {this.state.addressNavitia.places[0].stop_area.coord.lat} Longitude : {this.state.addressNavitia.places[0].stop_area.coord.lon}</p>
                     </div> : <div>En attente chargement adresse</div>}
                 {this.state.isloadedGPS && this.state.addressNavitia.places[0].embedded_type=='address' ? 
                     <div>
