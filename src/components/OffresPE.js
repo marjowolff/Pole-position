@@ -90,7 +90,7 @@ class OffresPE extends React.Component {
 
     render() {
           //console.log(`props temps trajet max :${this.props.location.data.tempsTrajetMax}`)
-          console.log(this.state.jobOffers)
+          //console.log(this.state.jobOffers)
           
         return (
             <div>
@@ -101,17 +101,11 @@ class OffresPE extends React.Component {
                        
                        this.state.jobOffers.length > 0 ?  (
                             <TempsTrajetNavitia jobOffers={this.state.jobOffers} longitudeDepart={this.props.location.data.longitudeDepart} latitudeDepart={this.props.location.data.latitudeDepart} tempsTrajetMax={this.props.location.data.tempsTrajetMax}/>
-                               
-                                
                                        ) : (
                                         <div>
                                              <p>Aucune offre ne correspond à votre recherche</p>
                                         </div>
-                                    )
-                               
-                       
-                        
-                       
+                                    )               
                      )
                     }
 

@@ -1,16 +1,14 @@
 import React from "react";
+import Loader from "./Loader"
 import ShowResults from "./ShowResults";
 
 class TempsTrajetNavitia extends React.Component {
   state = {
     token: "b0b9e3a3-8f64-4941-8ba7-b62b78071d18",
-    longitudeDepart: this.props.longitudeDepart,
-    latitudeDepart: this.props.latitudeDepart,
-    longitudeArrivee: this.props.longitudeArrivee,
-    latitudeArrivee: this.props.latitudeArrivee,
     navResult: {},
     tabOffersWithDuration: [],
     tempsTrajetMax: this.props.tempsTrajetMax,
+    loaded : false,
   };
 
   getTabDuration = () => {
@@ -60,7 +58,7 @@ class TempsTrajetNavitia extends React.Component {
       }
       //console.log("test fin boucle")
     }
-    // this.setState({ tabOffersWithDuration : tabOffers })
+     this.setState({ loaded : true })
   };
 
   componentDidMount() {
@@ -68,15 +66,16 @@ class TempsTrajetNavitia extends React.Component {
   }
 
   render() {
+    const OffersWithDuration = this.state.tabOffersWithDuration.filter((offer) => offer.tempsTrajet < this.state.tempsTrajetMax).sort((a, b) => a.tempsTrajet - b.tempsTrajet)
     // console.log(this.state.tabOffersWithDuration)
     //console.log(this.props.jobOffers)
     //console.log(this.state.tempsTrajetMax)
     return (
       <div>
-        {this.state.tabOffersWithDuration
-          .filter((offer) => offer.tempsTrajet < this.state.tempsTrajetMax)
-          .sort((a, b) => a.tempsTrajet - b.tempsTrajet)
-          .map((offer) => (
+        { !this.state.loaded ? <Loader/> : 
+          OffersWithDuration.length > 0 ? (
+             OffersWithDuration
+            .map((offer) => (
             <div key={offer.id}>
               <ShowResults
                 title={offer.intitule}
@@ -87,8 +86,11 @@ class TempsTrajetNavitia extends React.Component {
                 tempsTrajet={offer.tempsTrajet}
                 lienOffrePE={offer.origineOffre.urlOrigine}
               />
-            </div>
-          ))}
+            </div> )
+          )) :(
+            <div> <p> Aucune offre ne correspond à votre recherche </p> </div>
+          )
+        }
       </div>
     );
   }
