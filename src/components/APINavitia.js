@@ -1,4 +1,5 @@
 import React from "react";
+import LoaderGeo from "./LoaderLogo/Loader"
 
 class NavitiaAdresse extends React.Component {
   state = {
@@ -34,7 +35,7 @@ class NavitiaAdresse extends React.Component {
       
       <div>
         {!this.state.isloaded ? (
-          <div>Loading ...</div>
+          <div><LoaderGeo /></div>
         ) : (
           <h1>
            
