@@ -1,5 +1,6 @@
 import React from "react";
 import Loader from "./Loader"
+import NoOffer from "./NoOffer";
 import ShowResults from "./ShowResults";
 
 class TempsTrajetNavitia extends React.Component {
@@ -88,7 +89,7 @@ class TempsTrajetNavitia extends React.Component {
               />
             </div> )
           )) :(
-            <div> <p> Aucune offre ne correspond à votre recherche </p> </div>
+            <div> <NoOffer/> </div>
           )
         }
       </div>

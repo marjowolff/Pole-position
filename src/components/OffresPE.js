@@ -3,6 +3,7 @@ import axios from "axios"
 import BackButton from './BackButton'
 import TempsTrajetNavitia from './TempsTrajetNavitia';
 import Loader from "./Loader"
+import NoOffer from "./NoOffer"
 
 
 
@@ -135,7 +136,7 @@ class OffresPE extends React.Component {
                             <TempsTrajetNavitia jobOffers={this.state.jobOffers} longitudeDepart={this.props.location.data.longitudeDepart} latitudeDepart={this.props.location.data.latitudeDepart} tempsTrajetMax={this.props.location.data.tempsTrajetMax}/>
                                        ) : (
                                         <div>
-                                             <p>Aucune offre ne correspond à votre recherche</p>
+                                             <NoOffer/>
                                         </div>
                                     )               
                      )
