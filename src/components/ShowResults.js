@@ -20,7 +20,7 @@ class ShowResults extends React.Component {
                         {this.props.contractNature === "Contrat apprentissage" ?
                         <p><IoMdBriefcase />{contractNature}</p> : <p></p>}
                         <p><IoMdBriefcase />{contractType}</p>
-                        <p id="FaBus" className={tempsTrajet < 20 ? "inf20" : (tempsTrajet < 30 ? "inf30" : (tempsTrajet < 45 ? "inf45": (tempsTrajet < 60 ? "inf60": (tempsTrajet <75 ? "inf75" : "sup75")))) }><FaBus /> {tempsTrajet} min </p>
+                        <p id="FaBus" className={tempsTrajet <= 30 ? "inf30" : (tempsTrajet <= 60 ? "inf60": "sup60") }><FaBus /> {tempsTrajet} min </p>
                     </div>
                     <a href={lienOffrePE} target="blanck" ><button className="cardButton">Voir l'offre</button></a>  
                 </div>
