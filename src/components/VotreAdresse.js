@@ -13,7 +13,14 @@ class VotreAdresse extends Component {
         address:'',
         isloadedGPS:false,
         token: "b0b9e3a3-8f64-4941-8ba7-b62b78071d18",
-        addressNavitia: ''
+        addressNavitia: '',
+        ref:[
+            'Paris',
+            'Madrid',
+            'Deffand',
+            'Antony'
+        ],
+        suggestions:[]
     }
     
 
@@ -26,6 +33,10 @@ class VotreAdresse extends Component {
     
     handleChangeAddress = (e) => {
         this.setState({ address: e.target.value })
+        // if (value.length===0){
+        //     this.setState({suggestions:[]})} else {
+        //     const regex = new RegExp(`^${value}`)
+        //     }
     }
 
     liftGPSCoordinates = () => {
@@ -51,6 +62,9 @@ class VotreAdresse extends Component {
         
       };
 
+    suggestionSelected (value) {
+        this.setState({address:value})
+    }
     
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -73,7 +87,7 @@ class VotreAdresse extends Component {
     
     }
     render() {
-        console.log(this.state)
+        console.log('Places',this.state.addressNavitia.places)
         return (
             
             <div className="divAddressInput">
@@ -84,16 +98,23 @@ class VotreAdresse extends Component {
                     placeholder="Votre adresse"
                     onChange={this.handleChangeAddress}
                 />
+                <ul>
+                    {/* {this.state.isloadedGPS ? <li>loading</li> : this.state.addressNavitia.places.map(adresse => <li key={adresse}>{adresse.name}</li>)} */}
+                </ul>
+                {this.state.isloadedGPS ? 
+                    <div>
+                        <ul>
+                            {this.state.addressNavitia.places.slice(0,4).map(place => <li onClick={()=> this.suggestionSelected(place.name)}> {place.name}</li>)}
+                        </ul>
+                    </div> : <div> </div>}
                 {this.state.isloadedGPS && this.state.addressNavitia.places[0].embedded_type=='stop_area' ? 
                     <div>
-                        <p>Votre adresse actuelle {this.state.addressNavitia.places[0].name}</p>
                         <p>Vos coordonnées GPS Latitude : {this.state.addressNavitia.places[0].stop_area.coord.lat} Longitude : {this.state.addressNavitia.places[0].stop_area.coord.lon}</p>
-                    </div> : <div>En attente chargement adresse</div>}
+                    </div> : <div> </div>}
                 {this.state.isloadedGPS && this.state.addressNavitia.places[0].embedded_type=='address' ? 
                     <div>
-                        <p>Votre adresse actuelle {this.state.addressNavitia.places[0].name}</p>
                         <p>Vos coordonnées GPS Latitude : {this.state.addressNavitia.places[0].address.coord.lat} Longitude : {this.state.addressNavitia.places[0].address.coord.lon} </p>
-                    </div> : <div>En attente chargement adresse</div>}
+                    </div> : <div> </div>}
                 <button className = "GeolocButton" onClick={this.handleClick}><MdMyLocation /> Me géolocaliser</button>
                 
                 {this.state.geoLocAsked &&  <Geolocalisation long={this.state.longitude} lat={this.state.latitude} handleCoordDepart={this.handleCoordDepart} />}

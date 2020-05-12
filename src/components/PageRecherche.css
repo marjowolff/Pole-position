@@ -101,3 +101,15 @@ button{
 h1{
     margin : 10px 10px 0 15px;
 }
+
+.divAddressInput li {
+    color:#6497B8;
+    padding:0;
+    margin:auto;
+    width:80%;
+    cursor:pointer
+}
+
+.divAddressInput li:hover {
+    background-color:lightgray
+}
