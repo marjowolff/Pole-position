@@ -1,5 +1,6 @@
 import React from "react";
 import { FaBus } from 'react-icons/fa'
+import GeoLoad from "./LoaderLogo/GeoLoad"
 
 class NavitiaTime extends React.Component {
   state = {
@@ -46,7 +47,7 @@ class NavitiaTime extends React.Component {
       
       <div>
         {!this.state.isloaded ? (
-          <div>Loading ...</div>
+          <div><GeoLoad /></div>
         ) : (
           // <h1>
            
