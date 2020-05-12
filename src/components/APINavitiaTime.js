@@ -14,7 +14,13 @@ class NavitiaTime extends React.Component {
   };
 
   getTransportationTime = () => {
-    const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${this.props.longitudeDepart};${this.props.latitudeDepart}&to=${this.props.longitudeArrivee};${this.props.latitudeArrivee}&key=${this.state.token}`;
+    let currentDate = new Date()
+    let days = currentDate.getDay() - 1 + 7 // Calcul du prochain lundi
+    currentDate.setDate(currentDate.getDate() + days)
+    currentDate.setHours(08)
+    currentDate.toISOString
+    const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${this.props.longitudeDepart};${this.props.latitudeDepart}&to=${this.props.longitudeArrivee};${this.props.latitudeArrivee}&datetime=${currentDate}&key=${this.state.token}`;
+    console.log(currentDate,url)
     fetch(url)
       .then((res) => res.json())
       .then((res) => this.setState({ transports: res, isloaded: true }))
