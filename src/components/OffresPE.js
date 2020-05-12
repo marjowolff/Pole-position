@@ -13,15 +13,15 @@ class OffresPE extends React.Component {
         jobKeyWord:"",
         contractChoice:"",
         natureContratChoice:"",
+        loadedUserChoices : false,
+        tokenLoaded : false,
         loaded: false,
-        longitudeDepart:this.props.location.data.longitudeDepart, //2.3350427 
-        latitudeDepart:this.props.location.data.latitudeDepart, //48.8108749
-        longitudeArrivee:2.3350427,
-        latitudeArrivee:48.8108749,
-        offerDuration:0
     };
 
     getTokenPE = () => {
+        let tokenFromStor = sessionStorage.getItem('tokenStor')
+
+        if( this.state.token === "no token"){
         axios({
             method: 'post',
             url: 'https://cors-anywhere.herokuapp.com/https://entreprise.pole-emploi.fr/connexion/oauth2/access_token?realm=%2Fpartenaire&grant_type=client_credentials&client_id=PAR_offrespoleemploi_4f4ff3756bc6ad0d21553a4cbed52fe90a09736594c0f038f134c61273aed8a1&client_secret=4c10c5635c0f9b1cce87b2687958ecca2fdd04e72bfd83262297229073f092ee&scope=application_PAR_offrespoleemploi_4f4ff3756bc6ad0d21553a4cbed52fe90a09736594c0f038f134c61273aed8a1%20api_offresdemploiv2 o2dsoffre',
@@ -29,17 +29,25 @@ class OffresPE extends React.Component {
                 'Content-Type': 'application/x-www-form-urlencoded',
             }
         })
-            .then(res => this.setState({ token: res.data.access_token }, () => { this.getJobOffers() }))
-
+            .then(res => {
+                sessionStorage.setItem('tokenStor', res.data.access_token)
+                this.setState({ tokenLoaded : true })
+            })
+            //.then(res => this.setState({ token: res.data.access_token } /*, () => { this.getJobOffers() } */))
+        } 
     };
+
+    //sessionStorage.setItem('tokenStor', 'res.data.resultats'
 
     // https://cors-anywhere.herokuapp.com/
 
     getJobOffers = () => {
+        let tokenFromStor = sessionStorage.getItem('tokenStor')
         axios({
             method: 'get',
             url: 'https://api.emploi-store.fr/partenaire/offresdemploi/v2/offres/search',
-            headers: { Authorization: `Bearer ${this.state.token}` },
+            headers: { Authorization: `Bearer ${tokenFromStor}` },
+           // headers: { Authorization: `Bearer ${this.state.token}` },
             //headers: { Authorization: `Bearer 34d8e26b-e9b9-4397-8be3-584e9dcd7a6a` },
            
             params: {
@@ -77,20 +85,44 @@ class OffresPE extends React.Component {
             this.setState({ natureContratChoice: "E2" })
         }
     }
-     
-    componentDidMount() {
+
+    handleUserChoices = () => {
         this.handleKeyWords()
         this.handleContractChoice()
-        this.handleNatureContrat() 
-        this.getTokenPE()  
+        this.handleNatureContrat()
+        this.setState({ loadedUserChoices: true } /* ,() => { this.getTokenPE() }*/)
+    }
+
+    tokenStorage = () => {
+        sessionStorage.setItem('tokenStor', 'rien à stocker')
+    }
+    getTokenStorage = () => {
+        let tokenFromStor = sessionStorage.getItem('tokenStor')
+        console.log(`Le token du cache : ${tokenFromStor}`)
+    }
+     
+    componentDidMount() {
+        this.handleUserChoices()
+        this.getTokenPE()
+        //this.tokenStorage()
+        //this.getTokenPE()  
         //this.getJobOffers()
       }
     
-
+    componentDidUpdate() {
+        if(this.state.tokenLoaded){
+        this.getTokenStorage()
+        }
+        if (this.state.loadedUserChoices && this.state.tokenLoaded){
+            this.getJobOffers()
+            this.setState({loadedUserChoices : false }) 
+        }
+    }
 
     render() {
           //console.log(`props temps trajet max :${this.props.location.data.tempsTrajetMax}`)
           //console.log(this.state.jobOffers)
+          console.log(this.state.token)
           
         return (
             <div>

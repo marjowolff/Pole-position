@@ -45,13 +45,13 @@ class TempsTrajetNavitia extends React.Component {
                     navResult: "Calcul temps trajet impossible",
                   })
                 }
-                console.log(this.state.navResult)
+                //console.log(this.state.navResult)
               }
           )
           //.then((res) => console.log(this.state.navResult))
           .then((res) => {
             tabOffers[i].tempsTrajet = this.state.navResult;
-            console.log(`pour tabOffer num ${i} temps trajet ${tabOffers[i].tempsTrajet}`)
+            //console.log(`pour tabOffer num ${i} temps trajet ${tabOffers[i].tempsTrajet}`)
           })
           .then((res) => this.setState({ tabOffersWithDuration: tabOffers }));
         
