@@ -1,5 +1,5 @@
 import React from 'react';
-import loaderGeo from '../Images/Loader.png'
+import loaderGeo from '../Images/LoaderGeo.png'
 import "./LoaderGeo.css"
 
 function LoaderGeo() {
