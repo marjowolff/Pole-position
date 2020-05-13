@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navigation.css';
-import Logo from "./Logo"
+import Logo from "./LoaderLogo/Logo"
 
 
 

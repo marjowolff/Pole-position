@@ -1,6 +1,6 @@
 import React from "react";
 import NavitiaAdresse from "./APINavitia.js";
-
+import GeoLoad from "./LoaderLogo/GeoLoad"
 
 const erreur = (error) => {
   switch (error.code) {
@@ -50,7 +50,7 @@ class Geolocalisation extends React.Component {
     return (
       <div>
         {!this.state.loaded ? (
-          <div>Loading ...</div>
+          <div><GeoLoad /></div>
         ) : (
           <div>
             <NavitiaAdresse
