@@ -35,7 +35,7 @@ class TempsTrajetNavitia extends React.Component {
           longDepart = 2.34; // si pas de géoloc ou d'adresse fournie pour le point de départ, lat et long par défaut de paris centre
           latDepart = 48.85;
           } 
-       // console.log(`long depart : ${longDepart}, lat depart :${latDepart}, long arrivée :${longArrivee},lat arrivée : ${latArrivee}`)
+        //console.log(`long depart : ${longDepart}, lat depart :${latDepart}, long arrivée :${longArrivee},lat arrivée : ${latArrivee}`)
         const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${longDepart};${latDepart}&to=${longArrivee};${latArrivee}&key=${this.state.token}`;
         fetch(url)
           .then((res) => res.json())
@@ -68,11 +68,13 @@ class TempsTrajetNavitia extends React.Component {
  // setTimeout(myFunction, 3000)
 
  loadNoOffer =() =>{
-  setTimeout(()=>{this.setState({loadNoOffer : true})}, 10000)
+  setTimeout(()=>{this.setState({loadNoOffer : true})}, 500)
  }
   
   componentDidMount() {
     this.getTabDuration();
+  }
+  componentDidUpdate(){
     this.loadNoOffer();
   }
  
@@ -85,7 +87,7 @@ class TempsTrajetNavitia extends React.Component {
    
     // console.log(this.state.tabOffersWithDuration)
     //console.log(this.props.jobOffers)
-    console.log(`Loaded ? : ${this.state.loaded}`)
+   // console.log(`Loaded ? : ${this.state.loaded}`)
     return (
       <div>
         { !this.state.loaded ? <Loader/> : 

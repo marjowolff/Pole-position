@@ -24,7 +24,7 @@ class OffresPE extends React.Component {
         if( !tokenFromStor ){
             this.getTokenPEAxios()
         } else {
-            this.setState({ tokenLoaded : true })
+            this.setState({ tokenLoaded : true }, ()=>this.getJobOffersAxios())
         }
     };
 
@@ -38,7 +38,7 @@ class OffresPE extends React.Component {
         })
             .then(res => {
                 sessionStorage.setItem('tokenStor', res.data.access_token)
-                this.setState({ tokenLoaded : true })
+                this.setState({ tokenLoaded : true }, ()=>this.getJobOffersAxios())
             })
     }
 
@@ -56,7 +56,7 @@ class OffresPE extends React.Component {
            
             params: {
                 motsCles: this.state.jobKeyWord,
-                //commune: 75118,
+                commune: 75118,
                 typeContrat: this.state.contractChoice,
                 natureContrat: this.state.natureContratChoice,
                 //range: "0-10"
@@ -103,30 +103,28 @@ class OffresPE extends React.Component {
         this.handleKeyWords()
         this.handleContractChoice()
         this.handleNatureContrat()
-        this.setState({ loadedUserChoices: true })
+        this.setState({ loadedUserChoices: true },()=>this.getTokenPE())
     }
 
 
 
-    componentDidMount() {
+      componentDidMount() {
         this.handleUserChoices()
-        this.getTokenPE()
       }
     
-    componentDidUpdate() {
+
+   /* componentDidUpdate() {
         if (this.state.loadedUserChoices && this.state.tokenLoaded){
             this.getJobOffersAxios()
             this.setState({tokenLoaded : false }) 
         }
-    }
+    }*/
 
 
     render() {
           //console.log(`props temps trajet max :${this.props.location.data.tempsTrajetMax}`)
           //console.log(this.state.jobOffers)
           console.log(`le token du cache ${sessionStorage.getItem('tokenStor')}`)
-          console.log(this.error)
-          
           
         return (
             <div>
