@@ -1,6 +1,15 @@
 import React from "react";
 import ShowResults from "./ShowResults";
 
+let currentDate = new Date()
+console.log(currentDate,currentDate.getDay())
+let days = 7 - currentDate.getDay() +1 // Calcul du prochain lundi
+
+currentDate.setDate(currentDate.getDate() + days)
+currentDate.setHours(18)
+let date = currentDate.toISOString()
+
+
 class TempsTrajetNavitia extends React.Component {
   state = {
     token: "b0b9e3a3-8f64-4941-8ba7-b62b78071d18",
@@ -34,7 +43,19 @@ class TempsTrajetNavitia extends React.Component {
           latDepart = 48.85;
           } 
        // console.log(`long depart : ${longDepart}, lat depart :${latDepart}, long arrivée :${longArrivee},lat arrivée : ${latArrivee}`)
-        const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${longDepart};${latDepart}&to=${longArrivee};${latArrivee}&key=${this.state.token}`;
+      //  let currentDate = new Date()
+      // let days = currentDate.getDay() - 1 + 7 // Calcul du prochain lundi
+      // currentDate.setDate(currentDate.getDate() + days)
+      // currentDate.setHours('08')
+      // currentDate.toISOString
+      // // const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${this.props.longitudeDepart};${this.props.latitudeDepart}&to=${this.props.longitudeArrivee};${this.props.latitudeArrivee}&datetime=${currentDate}&key=${this.state.token}`;
+      // const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${longDepart};${latDepart}&to=${longArrivee};${latArrivee}&datetime=${currentDate}&key=${this.state.token}`;
+      // console.log(currentDate,url)
+      
+      const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${longDepart};${latDepart}&to=${longArrivee};${latArrivee}&datetime=${date}&key=${this.state.token}`;
+      console.log(currentDate,url)
+      //const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${longDepart};${latDepart}&to=${longArrivee};${latArrivee}&key=${this.state.token}`;
+        
         fetch(url)
           .then((res) => res.json())
           .then((res) => //console.log(res.journeys)
