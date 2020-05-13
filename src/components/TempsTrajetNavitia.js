@@ -1,5 +1,5 @@
 import React from "react";
-import Loader from "./Loader"
+import Loader from "./LoaderLogo/Loader"
 import NoOffer from "./NoOffer";
 import ShowResults from "./ShowResults";
 
