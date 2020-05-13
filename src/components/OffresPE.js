@@ -2,7 +2,7 @@ import React from 'react'
 import axios from "axios"
 import BackButton from './BackButton'
 import TempsTrajetNavitia from './TempsTrajetNavitia';
-import Loader from "./Loader"
+import Loader from "./LoaderLogo/Loader"
 
 
 
