@@ -56,7 +56,7 @@ class OffresPE extends React.Component {
            
             params: {
                 motsCles: this.state.jobKeyWord,
-                commune: 75118,
+                region: "11",
                 typeContrat: this.state.contractChoice,
                 natureContrat: this.state.natureContratChoice,
                 //range: "0-10"
