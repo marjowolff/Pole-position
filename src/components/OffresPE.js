@@ -125,6 +125,8 @@ class OffresPE extends React.Component {
           //console.log(`props temps trajet max :${this.props.location.data.tempsTrajetMax}`)
           //console.log(this.state.jobOffers)
           console.log(`le token du cache ${sessionStorage.getItem('tokenStor')}`)
+          console.log(this.error)
+          
           
         return (
             <div>
@@ -136,7 +138,7 @@ class OffresPE extends React.Component {
                             <TempsTrajetNavitia jobOffers={this.state.jobOffers} longitudeDepart={this.props.location.data.longitudeDepart} latitudeDepart={this.props.location.data.latitudeDepart} tempsTrajetMax={this.props.location.data.tempsTrajetMax}/>
                                        ) : (
                                         <div>
-                                             <NoOffer/>
+                                            <NoOffer/>
                                         </div>
                                     )               
                      )

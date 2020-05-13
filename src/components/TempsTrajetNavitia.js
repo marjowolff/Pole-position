@@ -10,9 +10,12 @@ class TempsTrajetNavitia extends React.Component {
     tabOffersWithDuration: [],
     tempsTrajetMax: this.props.tempsTrajetMax,
     loaded : false,
+    loadNoOffer : false,
+    
   };
 
-  getTabDuration = () => {
+  getTabDuration = () => { 
+   
     const tabOffers = this.props.jobOffers;
     let longDepart = this.props.longitudeDepart;
     let latDepart = this.props.latitudeDepart;
@@ -54,23 +57,35 @@ class TempsTrajetNavitia extends React.Component {
             tabOffers[i].tempsTrajet = this.state.navResult;
             //console.log(`pour tabOffer num ${i} temps trajet ${tabOffers[i].tempsTrajet}`)
           })
-          .then((res) => this.setState({ tabOffersWithDuration: tabOffers }));
+          .then((res) => this.setState({ tabOffersWithDuration: tabOffers, loaded: true}, ));
         
       }
       //console.log("test fin boucle")
     }
-     this.setState({ loaded : true })
+    //this.setState({ loaded : true })
   };
 
+ // setTimeout(myFunction, 3000)
+
+ loadNoOffer =() =>{
+  setTimeout(()=>{this.setState({loadNoOffer : true})}, 10000)
+ }
+  
   componentDidMount() {
     this.getTabDuration();
+    this.loadNoOffer();
   }
+ 
+
+
 
   render() {
     const OffersWithDuration = this.state.tabOffersWithDuration.filter((offer) => offer.tempsTrajet < this.state.tempsTrajetMax).sort((a, b) => a.tempsTrajet - b.tempsTrajet)
+
+   
     // console.log(this.state.tabOffersWithDuration)
     //console.log(this.props.jobOffers)
-    //console.log(this.state.tempsTrajetMax)
+    console.log(`Loaded ? : ${this.state.loaded}`)
     return (
       <div>
         { !this.state.loaded ? <Loader/> : 
@@ -88,8 +103,8 @@ class TempsTrajetNavitia extends React.Component {
                 lienOffrePE={offer.origineOffre.urlOrigine}
               />
             </div> )
-          )) :(
-            <div> <NoOffer/> </div>
+          )) :( this.state.loadNoOffer ?
+            <div> <NoOffer/> </div> : <div> </div>
           )
         }
       </div>
