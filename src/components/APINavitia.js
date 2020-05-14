@@ -32,18 +32,28 @@ class NavitiaAdresse extends React.Component {
 
   render() {
     return (
-      
+
       <div>
         {!this.state.isloaded ? (
           <div><GeoLoad /></div>
         ) : (
-         
+
             <p className="AdressText">
               {" "}
               Votre Adresse géolocalisée :{" "}
               {this.state.transports.journeys[0].sections[0].from.address.label}
             </p>
-            
+           /* { <p>
+              {" "}
+              Votre Adresse d'arrivée :{" "}
+              {
+                this.state.transports.journeys[0].sections[
+                  this.state.transports.journeys[0].sections.length - 1
+                ].to.address.label
+              }
+            </p>
+            <p> Temps de transport : {this.state.duration} minutes </p> }*/
+
         )}
       </div>
     );
