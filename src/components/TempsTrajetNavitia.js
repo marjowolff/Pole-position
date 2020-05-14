@@ -39,25 +39,15 @@ class TempsTrajetNavitia extends React.Component {
         longArrivee !== undefined &&
         latArrivee !== undefined
       ) {
-         if(longDepart == "2.0" || latDepart == "48.0" ){
+         if(longDepart === "2.0" || latDepart === "48.0" ){
           console.log("pas de géoloc")
           longDepart = 2.34; // si pas de géoloc ou d'adresse fournie pour le point de départ, lat et long par défaut de paris centre
           latDepart = 48.85;
           } 
-       // console.log(`long depart : ${longDepart}, lat depart :${latDepart}, long arrivée :${longArrivee},lat arrivée : ${latArrivee}`)
-      //  let currentDate = new Date()
-      // let days = currentDate.getDay() - 1 + 7 // Calcul du prochain lundi
-      // currentDate.setDate(currentDate.getDate() + days)
-      // currentDate.setHours('08')
-      // currentDate.toISOString
-      // // const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${this.props.longitudeDepart};${this.props.latitudeDepart}&to=${this.props.longitudeArrivee};${this.props.latitudeArrivee}&datetime=${currentDate}&key=${this.state.token}`;
-      // const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${longDepart};${latDepart}&to=${longArrivee};${latArrivee}&datetime=${currentDate}&key=${this.state.token}`;
-      // console.log(currentDate,url)
       
       const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${longDepart};${latDepart}&to=${longArrivee};${latArrivee}&datetime=${date}&key=${this.state.token}`;
       console.log(currentDate,url)
-      //const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${longDepart};${latDepart}&to=${longArrivee};${latArrivee}&key=${this.state.token}`;
-        
+       
         fetch(url)
           .then((res) => res.json())
           .then((res) => //console.log(res.journeys)
