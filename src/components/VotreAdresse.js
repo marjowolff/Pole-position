@@ -71,6 +71,7 @@ class VotreAdresse extends Component {
         console.log('dans le componentdidupdate')
         console.log(this.state.longitude)
         console.log(prevState.longitude)
+         
         if (this.state.longitude !== prevState.longitude) {
             console.log('different',prevState.longitude,this.state.longitude)
             this.props.handleLiftCoordDepart(this.state.longitude,this.state.latitude)
