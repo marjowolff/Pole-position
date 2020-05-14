@@ -46,7 +46,7 @@ class NavitiaAdresse extends React.Component {
               Votre Adresse géolocalisée :{" "}
               {this.state.transports.journeys[0].sections[0].from.address.label}
             </p>
-            <p>
+            {/* <p>
               {" "}
               Votre Adresse d'arrivée :{" "}
               {
@@ -55,7 +55,7 @@ class NavitiaAdresse extends React.Component {
                 ].to.address.label
               }
             </p>
-            <p> Temps de transport : {this.state.duration} minutes </p>
+            <p> Temps de transport : {this.state.duration} minutes </p> */}
           </h1>
         )}
       </div>

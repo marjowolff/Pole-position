@@ -14,13 +14,7 @@ class VotreAdresse extends Component {
         isloadedGPS:false,
         token: "b0b9e3a3-8f64-4941-8ba7-b62b78071d18",
         addressNavitia: '',
-        ref:[
-            'Paris',
-            'Madrid',
-            'Deffand',
-            'Antony'
-        ],
-        suggestions:[]
+        autocompleteEnabled:true
     }
     
 
@@ -32,7 +26,7 @@ class VotreAdresse extends Component {
       }
     
     handleChangeAddress = (e) => {
-        this.setState({ address: e.target.value })
+        this.setState({ address: e.target.value,autocompleteEnabled:true })
         // if (value.length===0){
         //     this.setState({suggestions:[]})} else {
         //     const regex = new RegExp(`^${value}`)
@@ -43,8 +37,8 @@ class VotreAdresse extends Component {
         console.log('Lift',this.state.addressNavitia.places)
         if (this.state.addressNavitia.places[0].embedded_type==='stop_area') {var lat = this.state.addressNavitia.places[0].stop_area.coord.lat;
             var lng = this.state.addressNavitia.places[0].stop_area.coord.lon;
-            } else if (this.state.addressNavitia.places[0].embedded_type==='address') {var lat = this.state.addressNavitia.places[0].address.coord.lat;
-                var lng = this.state.addressNavitia.places[0].address.coord.lon;
+            } else if (this.state.addressNavitia.places[0].embedded_type==='address') {lat = this.state.addressNavitia.places[0].address.coord.lat;
+                lng = this.state.addressNavitia.places[0].address.coord.lon;
                 }
         console.log(lat, lng);
         this.setState({ longitude: lng, latitude: lat });
@@ -63,7 +57,7 @@ class VotreAdresse extends Component {
       };
 
     suggestionSelected (value) {
-        this.setState({address:value})
+        this.setState({address:value,autocompleteEnabled:false})
     }
     
 
@@ -102,20 +96,20 @@ class VotreAdresse extends Component {
                 <ul>
                     {/* {this.state.isloadedGPS ? <li>loading</li> : this.state.addressNavitia.places.map(adresse => <li key={adresse}>{adresse.name}</li>)} */}
                 </ul>
-                {this.state.isloadedGPS ? 
+                {this.state.isloadedGPS && this.state.autocompleteEnabled ? 
                     <div>
                         <ul>
                             {this.state.addressNavitia.places.slice(0,4).map(place => <li onClick={()=> this.suggestionSelected(place.name)}> {place.name}</li>)}
                         </ul>
                     </div> : <div> </div>}
-                {this.state.isloadedGPS && this.state.addressNavitia.places[0].embedded_type=='stop_area' ? 
+                {/* {this.state.isloadedGPS && this.state.addressNavitia.places[0].embedded_type=='stop_area' ? 
                     <div>
                         <p>Vos coordonnées GPS Latitude : {this.state.addressNavitia.places[0].stop_area.coord.lat} Longitude : {this.state.addressNavitia.places[0].stop_area.coord.lon}</p>
                     </div> : <div> </div>}
                 {this.state.isloadedGPS && this.state.addressNavitia.places[0].embedded_type=='address' ? 
                     <div>
                         <p>Vos coordonnées GPS Latitude : {this.state.addressNavitia.places[0].address.coord.lat} Longitude : {this.state.addressNavitia.places[0].address.coord.lon} </p>
-                    </div> : <div> </div>}
+                    </div> : <div> </div>} */}
                 <button className = "GeolocButton" onClick={this.handleClick}><MdMyLocation /> Me géolocaliser</button>
                 
                 {this.state.geoLocAsked &&  <Geolocalisation long={this.state.longitude} lat={this.state.latitude} handleCoordDepart={this.handleCoordDepart} />}

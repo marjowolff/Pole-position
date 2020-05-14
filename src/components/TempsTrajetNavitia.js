@@ -37,16 +37,15 @@ class TempsTrajetNavitia extends React.Component {
         longArrivee !== undefined &&
         latArrivee !== undefined
       ) {
-         if(longDepart == "2.0" || latDepart == "48.0" ){
+         if(longDepart === "2.0" || latDepart === "48.0" ){
           console.log("pas de géoloc")
           longDepart = 2.34; 
           latDepart = 48.85;
           } 
-       
-      const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${longDepart};${latDepart}&to=${longArrivee};${latArrivee}&datetime=${date}&key=${this.state.token}`;
-      console.log(currentDate,url)
       
-        
+      const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${longDepart};${latDepart}&to=${longArrivee};${latArrivee}&datetime=${date}&key=${this.state.token}`;
+      
+       
         fetch(url)
           .then((res) => res.json())
           .then((res) => 
