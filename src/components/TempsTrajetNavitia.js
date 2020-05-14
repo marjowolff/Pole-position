@@ -1,4 +1,6 @@
 import React from "react";
+import Loader from "./LoaderLogo/Loader"
+import NoOffer from "./NoOffer";
 import ShowResults from "./ShowResults";
 
 let currentDate = new Date()
@@ -13,16 +15,16 @@ let date = currentDate.toISOString()
 class TempsTrajetNavitia extends React.Component {
   state = {
     token: "b0b9e3a3-8f64-4941-8ba7-b62b78071d18",
-    longitudeDepart: this.props.longitudeDepart,
-    latitudeDepart: this.props.latitudeDepart,
-    longitudeArrivee: this.props.longitudeArrivee,
-    latitudeArrivee: this.props.latitudeArrivee,
     navResult: {},
     tabOffersWithDuration: [],
     tempsTrajetMax: this.props.tempsTrajetMax,
+    loaded : false,
+    loadNoOffer : false,
+    
   };
 
-  getTabDuration = () => {
+  getTabDuration = () => { 
+   
     const tabOffers = this.props.jobOffers;
     let longDepart = this.props.longitudeDepart;
     let latDepart = this.props.latitudeDepart;
@@ -68,36 +70,51 @@ class TempsTrajetNavitia extends React.Component {
                     navResult: "Calcul temps trajet impossible",
                   })
                 }
-                console.log(this.state.navResult)
+                //console.log(this.state.navResult)
               }
           )
           //.then((res) => console.log(this.state.navResult))
           .then((res) => {
             tabOffers[i].tempsTrajet = this.state.navResult;
-            console.log(`pour tabOffer num ${i} temps trajet ${tabOffers[i].tempsTrajet}`)
+            //console.log(`pour tabOffer num ${i} temps trajet ${tabOffers[i].tempsTrajet}`)
           })
-          .then((res) => this.setState({ tabOffersWithDuration: tabOffers }));
+          .then((res) => this.setState({ tabOffersWithDuration: tabOffers, loaded: true}, ));
         
       }
       //console.log("test fin boucle")
     }
-    // this.setState({ tabOffersWithDuration : tabOffers })
+    //this.setState({ loaded : true })
   };
 
+ // setTimeout(myFunction, 3000)
+
+ loadNoOffer =() =>{
+  setTimeout(()=>{this.setState({loadNoOffer : true})}, 500)
+ }
+  
   componentDidMount() {
     this.getTabDuration();
   }
+  componentDidUpdate(){
+    this.loadNoOffer();
+  }
+ 
+
+
 
   render() {
+    const OffersWithDuration = this.state.tabOffersWithDuration.filter((offer) => offer.tempsTrajet < this.state.tempsTrajetMax).sort((a, b) => a.tempsTrajet - b.tempsTrajet)
+
+   
     // console.log(this.state.tabOffersWithDuration)
     //console.log(this.props.jobOffers)
-    //console.log(this.state.tempsTrajetMax)
+   // console.log(`Loaded ? : ${this.state.loaded}`)
     return (
       <div>
-        {this.state.tabOffersWithDuration
-          .filter((offer) => offer.tempsTrajet < this.state.tempsTrajetMax)
-          .sort((a, b) => a.tempsTrajet - b.tempsTrajet)
-          .map((offer) => (
+        { !this.state.loaded ? <Loader/> : 
+          OffersWithDuration.length > 0 ? (
+             OffersWithDuration
+            .map((offer) => (
             <div key={offer.id}>
               <ShowResults
                 title={offer.intitule}
@@ -108,8 +125,11 @@ class TempsTrajetNavitia extends React.Component {
                 tempsTrajet={offer.tempsTrajet}
                 lienOffrePE={offer.origineOffre.urlOrigine}
               />
-            </div>
-          ))}
+            </div> )
+          )) :( this.state.loadNoOffer ?
+            <div> <NoOffer/> </div> : <div> </div>
+          )
+        }
       </div>
     );
   }
