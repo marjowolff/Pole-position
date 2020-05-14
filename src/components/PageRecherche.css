@@ -1,115 +1,170 @@
-@font-face{
-    font-family : "Cereal";
-    src : url('./AirbnbCerealMedium.woff');
+@font-face {
+  font-family: "Cereal";
+  src: url("./AirbnbCerealMedium.woff");
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family : "Cereal", Helvetica, Arial, sans-serif;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Cereal", Helvetica, Arial, sans-serif;
+}
 
-.divPageRecherche{
-    display:flex;
-    flex-direction: column;
-    align-content: center;
+.divPageRecherche {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
 }
-.InputRechercheMotsClés{
-   margin : auto;
-   border: solid 1px;
-   padding: 7px;
-   width:80%;
-   border-radius: 0.25rem;
+.Title {
+  margin: 100px 10px 0px 30px;
+  font-weight: normal;
+  font-size: 2em;
+  color: #6497b8;
 }
-.divAddressInput{
-    display: flex;
-    width:100%;
-    flex-direction: column;
-    margin-bottom: 20px;
+.InputRechercheMotsClés {
+  margin: auto;
+  border: solid 1px;
+  padding: 7px;
+  width: 80%;
+  border-radius: 0.25rem;
+}
+.divAddressInput {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin-bottom: 20px;
 }
 .addressInput {
-    border-color: lightgrey;
-    padding: 7px;
-    border-radius: 0.25rem;
-    margin:auto;
-    width: 80%;
+  border-color: lightgrey;
+  padding: 7px;
+  border-radius: 0.25rem;
+  margin: auto;
+  width: 80%;
 }
-.divRechercheMotsClés{
-    width: 100%;
-    display: flex;
-    align-content: center;
-    margin : 20px 0;
+.divRechercheMotsClés {
+  width: 100%;
+  display: flex;
+  align-content: center;
+  margin: 20px 0;
 }
 .GeolocButton {
-    border: 0;
-    border-radius: 0.25rem;
-    background:lightgrey;
-    color: black;
-    font-size: 1rem;
-    line-height: 1.2;
-    /*white-space: nowrap;*/
-    text-decoration: none;
-    padding: 0.25rem 0.5rem;
-   /* margin: 0.5rem;*/
-    cursor: pointer;
-    width:70% ;
+  border: 0;
+  border-radius: 0.25rem;
+  background: lightgrey;
+  color: black;
+  font-size: 1rem;
+  line-height: 1.2;
+  /*white-space: nowrap;*/
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  /* margin: 0.5rem;*/
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 70%;
 }
-.tempsTrajet{
-    display:flex;
-    flex-direction: column;
-    align-content: center;
-    width:100%;
-    margin-bottom: 20px;
+.AdressText {
+    text-align: center;
+    color: #6497b8;
 }
-.tempsTrajetLabel, .tempsTrajetSelect{
-    margin: auto;
+.tempsTrajet {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: 100%;
+  margin-bottom: 20px;
 }
-.divContractButtons{
-display: flex;
-flex-direction: column;
+.tempsTrajetLabel,
+.tempsTrajetSelect {
+  margin: auto;
 }
-.divContractButtons1{
-    display: flex;
-    align-content: center;
-    }
-.divContractButtons2{
-    display: flex;
-    align-content: center;
-    }
-.ON{
-    background-color: #6497B8;
-    
+#tempsTrajet {
+  position: inherit;
 }
-.OFF{
-    background-color: lightgrey;
-    color: black;
+
+.divContractButtons {
+  display: flex;
+  flex-direction: column;
 }
-.divButtonValider{
- display: flex;
- align-content: center;
+.divContractButtons1 {
+  display: flex;
+  align-content: center;
 }
-.divButtonValider a{
-    margin:0;
-   }
-.ButtonValider{
- margin: 10px auto;
+.divContractButtons2 {
+  display: flex;
+  align-content: center;
 }
-button{
-    width:130px;
+.ON {
+  background-color: #6497b8;
 }
-h1{
-    margin : 10px 10px 0 15px;
+.OFF {
+  background-color: lightgrey;
+  color: black;
+}
+.divButtonValider {
+  display: flex;
+  justify-content: center;
+}
+.divButtonValider a {
+  margin-top: 20px;
+}
+.ButtonValider {
+  border: 0.15em solid white;
+}
+
+button {
+  width: 130px;
 }
 
 .divAddressInput li {
-    color:#6497B8;
-    padding:0;
-    margin:auto;
-    width:80%;
-    cursor:pointer
+  color: #6497b8;
+  padding: 0;
+  margin: auto;
+  width: 80%;
+  cursor: pointer;
 }
 
 .divAddressInput li:hover {
-    background-color:lightgray
+  background-color: lightgray;
+}
+
+.Footer {
+ 
+  height: 45vh;
+  background: no-repeat url(https://zupimages.net/up/20/20/kb0g.png);
+  background-position: center;
+}
+
+@media screen and (min-width: 700px) {
+    .Title {
+        margin-bottom: 20px;
+    }
+
+  .InputRechercheMotsClés {
+  
+    width: 40%;
+   
+  }
+
+  .addressInput {
+   
+    width: 40%;
+  }
+  
+
+  .GeolocButton {
+
+    width: 30%;
+  }
+
+  .divContractButtons {
+    margin-left:  15%;
+    margin-right:  15%;
+  }
+
+  .Footer {
+    margin-top: 40px;
+    
+    height: 300px;
+  }
 }
