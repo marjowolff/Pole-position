@@ -19,12 +19,13 @@ const Burger = () => {
                     </div>
                     <div className="Links">
                         <ul>
-                        <li><Link to="/" className="Path">Recherche</Link></li>
-                        <li><Link to="/resultats" className="Path">Résultats</Link></li>
+                        <li className="Li"><Link to="/" className="Path">Recherche</Link></li>
+                        <li className="Li"><Link to="/faq" className="Path">F.A.Q</Link></li>
                         </ul>
                     </div>
                 </nav>
             </div>
+        
 
     )
 }
