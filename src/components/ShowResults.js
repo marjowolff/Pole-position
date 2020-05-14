@@ -10,7 +10,7 @@ class ShowResults extends React.Component {
     render () {
         const {title, company, city, contractNature, contractType, tempsTrajet, lienOffrePE} = this.props
         return (
-            <div>
+            <div >
                 <div className="card">
                     <h2 className="cardTitle">{title}</h2>
                     <div className="cardSeparator">

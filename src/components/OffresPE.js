@@ -5,6 +5,7 @@ import TempsTrajetNavitia from './TempsTrajetNavitia';
 import NoOffer from "./NoOffer"
 import Loader from "./LoaderLogo/Loader"
 
+import './SearchResults.css';
 
 
 class OffresPE extends React.Component {
@@ -104,23 +105,26 @@ class OffresPE extends React.Component {
 
     render() {       
         return (
-            <div>
+            <div >
+            <div >
                 <BackButton />
                 <div>
                     {!this.state.offersloaded ? (<Loader />) : (
                        
-                       this.state.jobOffers.length > 0 ?  (
+                        this.state.jobOffers.length > 0 ?  (
                             <TempsTrajetNavitia jobOffers={this.state.jobOffers} longitudeDepart={this.props.location.data.longitudeDepart} latitudeDepart={this.props.location.data.latitudeDepart} tempsTrajetMax={this.props.location.data.tempsTrajetMax}/>
                                        ) : (
                                         <div>
                                             <NoOffer/>
                                         </div>
-                                    )               
+                                    )   
+                                              
                      )
                     }
 
                 </div>
-            </div>                  
+            </div>  
+            </div>                
         )}         
            
 };

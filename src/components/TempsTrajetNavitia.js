@@ -70,7 +70,7 @@ class TempsTrajetNavitia extends React.Component {
  
 
  loadNoOffer =() =>{
-  setTimeout(()=>{this.setState({loadNoOffer : true})}, 1000)
+  setTimeout(()=>{this.setState({loadNoOffer : true})}, 2000)
  }
   
   componentDidMount() {
@@ -86,7 +86,7 @@ class TempsTrajetNavitia extends React.Component {
   render() {
     const OffersWithDuration = this.state.tabOffersWithDuration.filter((offer) => offer.tempsTrajet < this.state.tempsTrajetMax).sort((a, b) => a.tempsTrajet - b.tempsTrajet)
     return (
-      <div>
+      <div className="results">
         { !this.state.loaded ? <Loader/> : 
           OffersWithDuration.length > 0 ? (
              OffersWithDuration

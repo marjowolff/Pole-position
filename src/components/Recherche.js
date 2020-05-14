@@ -7,6 +7,8 @@ import BoutonValider from './BoutonValider'
 import ChoixContrat from './ChoixContrat'
 import footer from './Images/footer.png'
 
+import './SearchResults.css'
+
 
 
 class Recherche extends React.Component {
