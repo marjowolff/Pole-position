@@ -42,8 +42,6 @@ class Geolocalisation extends React.Component {
 
   componentDidMount() {
     this.getGeolocalisation();
-    
-    // handleCoordDepart()
   }
 
   render() {

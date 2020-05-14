@@ -49,14 +49,12 @@ class Recherche extends React.Component {
  
 
   render (){
-    //console.log(`State de tempsTrajetMax : ${this.state.tempsTrajetMax}`)
     return (
       
       <div className="divPageRecherche">
 
         <h1>Bienvenue !</h1>
         <RechercheMotsCles userKeyWord={this.state.userKeyWord} handleChangeJobReve={this.handleChangeJobReve}/> 
-        {/* <div>Votre adresse dans le composant Parent {this.state.longitudeDepart} et {this.state.latitudeDepart}</div> */}
         <VotreAdresse long={this.state.longitudeDepart} lat={this.state.latitudeDepart} handleLiftCoordDepart={this.handleLiftCoordDepart}/>
         <VotreTempsTrajet handleTempsTrajetMax={this.handleTempsTrajetMax}/>
         <ChoixContrat selectCDI={this.state.selectCDI} handleCDI={this.handleCDI} selectCDD={this.state.selectCDD} handleCDD={this.handleCDD} selectINTERIM={this.state.selectINTERIM} handleINTERIM={this.handleINTERIM} selectApprenti={this.state.selectApprenti} handleApprenti={this.handleApprenti}/>

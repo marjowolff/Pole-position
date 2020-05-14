@@ -47,7 +47,9 @@ h2 {
     padding:7px;
     font-size:18px;
 }
-
+.cardTitle{
+    text-align: center;
+}
 p {
     font-size:15px;
 }
@@ -55,6 +57,26 @@ p {
 .cardSeparator {
     display:flex;
     justify-content: space-around;
+    flex-direction: column;
+}
+
+.companyEtContrat{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.company{
+    width : 70%;
+    padding : 10px;
+}
+
+.city{
+    padding-left : 10px ;
+}
+.contrat {
+    width: 30%;
+    text-align: right;
+    padding :10px 10px 0 0; 
 }
 
 .cardButton {
@@ -65,3 +87,34 @@ p {
     padding:5px;
     font-size:15px;
 }
+
+@media screen and (min-width: 800px) {
+    .card{
+        margin : 20px 250px;
+    }
+    .cardSeparator{
+        flex-direction: row ;
+        justify-content: space-between ;
+    }
+    .companyEtContrat{
+        flex-direction: row ;
+        justify-content: flex-start ;
+    }
+    .company{
+        width: auto;
+        padding: 10px;
+    }
+    .contrat{
+        width: auto;
+        padding: 10px;
+    }
+    .city{
+        padding : 10px;
+        flex-grow: 1;
+        text-align:right ;
+    }
+    #FaBus{
+        padding : 10px;
+        margin-top :0px;
+    }
+  }
