@@ -32,7 +32,7 @@
   }
 }
 
-li {
+.Li {
   display: flex;
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -56,10 +56,13 @@ li {
   display: flex;
   justify-content: flex-end;
   background-color: #6497b8;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
 }
 
 .Burger {
-  position: absolute;
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,6 +79,7 @@ li {
   border-radius: 5px;
   box-shadow: 1px 2px 5px blue;
   transition: all 0.5s ease-in-out;
+ 
 }
 .Wrap::before,
 .Wrap::after {
@@ -94,7 +98,7 @@ li {
 .open .Wrap {
   transform: translateX(-50px);
   background: transparent;
-  box-shadow: none;
+  box-shadow: none; 
 }
 .open .Wrap::before {
   transform: rotate(45deg) translate(35px, -35px);
