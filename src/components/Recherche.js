@@ -42,8 +42,6 @@ class Recherche extends React.Component {
   }
   
   handleLiftCoordDepart = (lng,lat) => {
-    console.log('Dans le Lift State lng est ',lng)
-    console.log('Dans le Lift State state lng est ',this.state.longitudeDepart)
     this.setState({longitudeDepart: lng,latitudeDepart:lat}) 
   }
  

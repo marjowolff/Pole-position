@@ -4,7 +4,6 @@ import NoOffer from "./NoOffer";
 import ShowResults from "./ShowResults";
 
 let currentDate = new Date()
-console.log(currentDate,currentDate.getDay())
 let days = 7 - currentDate.getDay() +1 
 
 currentDate.setDate(currentDate.getDate() + days)
@@ -38,7 +37,6 @@ class TempsTrajetNavitia extends React.Component {
         latArrivee !== undefined
       ) {
          if(longDepart === "2.0" || latDepart === "48.0" ){
-          console.log("pas de géoloc")
           longDepart = 2.34; 
           latDepart = 48.85;
           } 

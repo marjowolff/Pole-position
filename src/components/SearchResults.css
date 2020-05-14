@@ -20,8 +20,8 @@
 	flex-wrap: nowrap;
 	justify-content: center;
 	align-items: stretch;
-	align-content: flex-start;
-    
+    align-content: flex-start;
+    border-radius:6px;
 }
 
 
@@ -116,5 +116,11 @@ p {
     #FaBus{
         padding : 10px;
         margin-top :0px;
+    }
+  }
+
+  @media screen and (min-width: 800px)and (max-width: 1100px){
+    .card{
+        margin : 20px 100px;
     }
   }
