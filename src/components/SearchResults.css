@@ -127,13 +127,14 @@ p {
         margin-top :0px;
     }
     .background{
-        background-image: url("Images/backgroundIcones5.png");    
+        background-image: url("Images/backgroundIcones5.png"); 
+        min-height: 100vh;   
     }
    .results{
-       padding-bottom: 400px;
+       min-height: 100vh;
    }
     .background2{
-        height: 100vh;
+        min-height: 100vh;
     }
     
    .divPageRecherche{
