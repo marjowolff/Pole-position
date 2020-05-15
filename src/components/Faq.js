@@ -8,9 +8,9 @@ class Faq extends Component {
       <header>
         <h1 className="FaqTitle">F.A.Q</h1>
       </header>
-<div> 
-  <img src="https://zupimages.net/up/20/20/33vl.png" atl="Logo faq" className="FaqImg"/>
-</div>
+      <div>
+        <img src="https://zupimages.net/up/20/20/33vl.png" atl="Logo faq" className="FaqImg" />
+      </div>
 
     </div>
   }
