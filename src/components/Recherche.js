@@ -1,5 +1,4 @@
 import React from 'react'
-
 import RechercheMotsCles from './RechercheMotsCles'
 import VotreAdresse from './VotreAdresse'
 import VotreTempsTrajet from './VotreTempsTrajet'
@@ -14,10 +13,10 @@ import './SearchResults.css'
 class Recherche extends React.Component {
   state = {
     userKeyWord: "",
-    selectCDI:false,
-    selectCDD:false,
-    selectINTERIM:false,
-    selectApprenti:false,
+    selectCDI: false,
+    selectCDD: false,
+    selectINTERIM: false,
+    selectApprenti: false,
     tempsTrajetMax: "10000000000000",
     longitudeDepart: 2.0,
     latitudeDepart: 48.0
@@ -27,31 +26,30 @@ class Recherche extends React.Component {
     this.setState({ userKeyWord: userInput })
   }
   handleCDI = () => {
-    this.setState({selectCDI : !this.state.selectCDI})
+    this.setState({ selectCDI: !this.state.selectCDI })
   }
   handleCDD = () => {
-    this.setState({selectCDD : !this.state.selectCDD}) 
+    this.setState({ selectCDD: !this.state.selectCDD })
   }
   handleINTERIM = () => {
-    this.setState({selectINTERIM: !this.state.selectINTERIM}) 
+    this.setState({ selectINTERIM: !this.state.selectINTERIM })
   }
   handleApprenti = () => {
-    this.setState({selectApprenti: !this.state.selectApprenti}) 
+    this.setState({ selectApprenti: !this.state.selectApprenti })
   }
-  handleTempsTrajetMax =(event) =>{
+  handleTempsTrajetMax = (event) => {
     const userSelect = event.target.value;
-    this.setState({tempsTrajetMax: userSelect})
+    this.setState({ tempsTrajetMax: userSelect })
 
   }
   
   handleLiftCoordDepart = (lng,lat) => {
     this.setState({longitudeDepart: lng,latitudeDepart:lat}) 
   }
- 
 
   render (){
     return (
-      
+
       <div className="divPageRecherche">
 
         <h1 className="Title">Bienvenue !</h1>
@@ -68,9 +66,9 @@ class Recherche extends React.Component {
         </div>
       </footer>
       </div>
-      
+
     );
-  
+
+  }
 }
- } 
-  export default Recherche;
+export default Recherche;
