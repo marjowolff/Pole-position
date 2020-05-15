@@ -143,17 +143,19 @@ button {
   }
   .InputRechercheMotsClés {
   
-    width: 60%;
+    width: 40%;
    
   }
   .addressInput {
    
-    width: 60%;
+    width: 40%;
   }
-  
+  .divAddressInput li {
+    width: 40%;
+  }
   .GeolocButton {
 
-    width: 50%;
+    width: 15%;
   }
   .divContractButtons {
     margin-left: 15%;
