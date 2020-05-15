@@ -5,7 +5,7 @@ import VotreAdresse from './VotreAdresse'
 import VotreTempsTrajet from './VotreTempsTrajet'
 import BoutonValider from './BoutonValider'
 import ChoixContrat from './ChoixContrat'
-import footer from './Images/footer.png'
+
 
 import './SearchResults.css'
 

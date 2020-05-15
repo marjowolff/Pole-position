@@ -36,7 +36,7 @@ class TempsTrajetNavitia extends React.Component {
         longArrivee !== undefined &&
         latArrivee !== undefined
       ) {
-         if(longDepart === "2.0" || latDepart === "48.0" ){
+         if(longDepart == "2.0" || latDepart == "48.0" ){
           longDepart = 2.34; 
           latDepart = 48.85;
           } 
