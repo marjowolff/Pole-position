@@ -4,8 +4,7 @@ import NoOffer from "./NoOffer";
 import ShowResults from "./ShowResults";
 
 let currentDate = new Date()
-console.log(currentDate,currentDate.getDay())
-let days = 7 - currentDate.getDay() +1 // Calcul du prochain lundi
+let days = 7 - currentDate.getDay() +1 
 
 currentDate.setDate(currentDate.getDate() + days)
 currentDate.setHours(18)
@@ -28,29 +27,26 @@ class TempsTrajetNavitia extends React.Component {
     const tabOffers = this.props.jobOffers;
     let longDepart = this.props.longitudeDepart;
     let latDepart = this.props.latitudeDepart;
-    //console.log(tabOffers)
 
     for (let i = 0; i < tabOffers.length; i++) {
       const longArrivee = tabOffers[i].lieuTravail.longitude;
       const latArrivee = tabOffers[i].lieuTravail.latitude ;
-      //console.log(tabOffers[i].lieuTravail.longitude)
-      //console.log(tabOffers[i].lieuTravail.latitude)
+   
       if (
         longArrivee !== undefined &&
         latArrivee !== undefined
       ) {
-         if(longDepart === "2.0" || latDepart === "48.0" ){
-          console.log("pas de géoloc")
-          longDepart = 2.34; // si pas de géoloc ou d'adresse fournie pour le point de départ, lat et long par défaut de paris centre
+         if(longDepart == "2.0" || latDepart == "48.0" ){
+          longDepart = 2.34; 
           latDepart = 48.85;
           } 
       
       const url = `https://api.navitia.io/v1/coverage/fr-idf/journeys?from=${longDepart};${latDepart}&to=${longArrivee};${latArrivee}&datetime=${date}&key=${this.state.token}`;
-      console.log(currentDate,url)
+      
        
         fetch(url)
           .then((res) => res.json())
-          .then((res) => //console.log(res.journeys)
+          .then((res) => 
                { if (res.journeys !== undefined){
                   this.setState({
                     navResult: Math.round(res.journeys[0].duration / 60),
@@ -60,26 +56,21 @@ class TempsTrajetNavitia extends React.Component {
                     navResult: "Calcul temps trajet impossible",
                   })
                 }
-                //console.log(this.state.navResult)
               }
           )
-          //.then((res) => console.log(this.state.navResult))
           .then((res) => {
             tabOffers[i].tempsTrajet = this.state.navResult;
-            //console.log(`pour tabOffer num ${i} temps trajet ${tabOffers[i].tempsTrajet}`)
           })
           .then((res) => this.setState({ tabOffersWithDuration: tabOffers, loaded: true}, ));
         
       }
-      //console.log("test fin boucle")
     }
-    //this.setState({ loaded : true })
   };
 
- // setTimeout(myFunction, 3000)
+ 
 
  loadNoOffer =() =>{
-  setTimeout(()=>{this.setState({loadNoOffer : true})}, 500)
+  setTimeout(()=>{this.setState({loadNoOffer : true})}, 2000)
  }
   
   componentDidMount() {
@@ -94,13 +85,8 @@ class TempsTrajetNavitia extends React.Component {
 
   render() {
     const OffersWithDuration = this.state.tabOffersWithDuration.filter((offer) => offer.tempsTrajet < this.state.tempsTrajetMax).sort((a, b) => a.tempsTrajet - b.tempsTrajet)
-
-   
-    // console.log(this.state.tabOffersWithDuration)
-    //console.log(this.props.jobOffers)
-   // console.log(`Loaded ? : ${this.state.loaded}`)
     return (
-      <div>
+      <div className="results">
         { !this.state.loaded ? <Loader/> : 
           OffersWithDuration.length > 0 ? (
              OffersWithDuration

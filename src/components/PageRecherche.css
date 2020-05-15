@@ -62,11 +62,11 @@
   cursor: pointer;
   margin-top: 10px;
   margin-bottom: 10px;
-  width: 70%;
+  width: 60%;
 }
 .AdressText {
-    text-align: center;
-    color: #6497b8;
+  text-align: center;
+  color: #6497b8;
 }
 .tempsTrajet {
   display: flex;
@@ -123,6 +123,8 @@ button {
   margin: auto;
   width: 80%;
   cursor: pointer;
+  text-decoration: none;
+  list-style-type: none;
 }
 
 .divAddressInput li:hover {
@@ -130,42 +132,35 @@ button {
 }
 
 .Footer {
- 
   height: 45vh;
   background: no-repeat url(https://zupimages.net/up/20/20/kb0g.png);
   background-position: center;
 }
 
 @media screen and (min-width: 700px) {
-    .Title {
-        margin-bottom: 20px;
-    }
-
+  .Title {
+    margin-bottom: 20px;
+  }
   .InputRechercheMotsClés {
   
-    width: 40%;
+    width: 60%;
    
   }
-
   .addressInput {
    
-    width: 40%;
+    width: 60%;
   }
   
-
   .GeolocButton {
 
-    width: 30%;
+    width: 50%;
   }
-
   .divContractButtons {
-    margin-left:  15%;
-    margin-right:  15%;
+    margin-left: 15%;
+    margin-right: 15%;
   }
-
   .Footer {
     margin-top: 40px;
-    
     height: 300px;
   }
 }

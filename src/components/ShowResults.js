@@ -10,16 +10,18 @@ class ShowResults extends React.Component {
     render () {
         const {title, company, city, contractNature, contractType, tempsTrajet, lienOffrePE} = this.props
         return (
-            <div>
+            <div >
                 <div className="card">
-                    <h2>{title}</h2>
+                    <h2 className="cardTitle">{title}</h2>
                     <div className="cardSeparator">
+                        <div className="companyEtContrat">
                         {company ? 
-                        <p><FaBuilding />{company}</p> : <p><FaBuilding />Entreprise non renseignée</p>}
-                        <p><GoLocation /> {city}</p>
+                        <p className="company"><FaBuilding />{company}</p> : <p className="company"><FaBuilding />Entreprise non renseignée</p>}
                         {this.props.contractNature === "Contrat apprentissage" ?
-                        <p><IoMdBriefcase />{contractNature}</p> : <p></p>}
-                        <p><IoMdBriefcase />{contractType}</p>
+                        <p className="contrat"><IoMdBriefcase />{contractType}/{contractNature}</p> : 
+                        <p className="contrat"><IoMdBriefcase />{contractType}</p>}
+                        </div>
+                        <p className="city"><GoLocation /> {city}</p>
                         <p id="FaBus" className={tempsTrajet <= 30 ? "inf30" : (tempsTrajet <= 60 ? "inf60": "sup60") }><FaBus /> {tempsTrajet} min </p>
                     </div>
                     <a href={lienOffrePE} target="blanck" ><button className="cardButton">Voir l'offre</button></a>  

@@ -5,6 +5,7 @@ import TempsTrajetNavitia from './TempsTrajetNavitia';
 import NoOffer from "./NoOffer"
 import Loader from "./LoaderLogo/Loader"
 
+import './SearchResults.css';
 
 
 class OffresPE extends React.Component {
@@ -42,36 +43,26 @@ class OffresPE extends React.Component {
             })
     }
 
-    // https://cors-anywhere.herokuapp.com/
-
-  
     getJobOffersAxios = () => {
         let tokenFromStor = sessionStorage.getItem('tokenStor')
         axios({
             method: 'get',
             url: 'https://api.emploi-store.fr/partenaire/offresdemploi/v2/offres/search',
             headers: { Authorization: `Bearer ${tokenFromStor}` },
-           // headers: { Authorization: `Bearer ${this.state.token}` },
-            //headers: { Authorization: `Bearer 34d8e26b-e9b9-4397-8be3-584e9dcd7a6a` },
            
             params: {
                 motsCles: this.state.jobKeyWord,
                 region: "11",
                 typeContrat: this.state.contractChoice,
                 natureContrat: this.state.natureContratChoice,
-                //range: "0-10"
             }
         })
             .then(res => this.setState({ jobOffers: res.data.resultats, offersloaded: true }) , () => this.errorJobOffersAxios())
     }
 
     errorJobOffersAxios = (error) => {
-        console.log("pas de token !!!!!")
         this.getTokenPEAxios()
     }
-
-
-
 
 
     handleKeyWords = () => {
@@ -107,43 +98,33 @@ class OffresPE extends React.Component {
     }
 
 
-
       componentDidMount() {
         this.handleUserChoices()
       }
     
 
-   /* componentDidUpdate() {
-        if (this.state.loadedUserChoices && this.state.tokenLoaded){
-            this.getJobOffersAxios()
-            this.setState({tokenLoaded : false }) 
-        }
-    }*/
-
-
-    render() {
-          //console.log(`props temps trajet max :${this.props.location.data.tempsTrajetMax}`)
-          //console.log(this.state.jobOffers)
-          console.log(`le token du cache ${sessionStorage.getItem('tokenStor')}`)
-          
+    render() {       
         return (
-            <div>
+            <div >
+            <div >
                 <BackButton />
                 <div>
                     {!this.state.offersloaded ? (<Loader />) : (
                        
-                       this.state.jobOffers.length > 0 ?  (
+                        this.state.jobOffers.length > 0 ?  (
                             <TempsTrajetNavitia jobOffers={this.state.jobOffers} longitudeDepart={this.props.location.data.longitudeDepart} latitudeDepart={this.props.location.data.latitudeDepart} tempsTrajetMax={this.props.location.data.tempsTrajetMax}/>
                                        ) : (
                                         <div>
                                             <NoOffer/>
                                         </div>
-                                    )               
+                                    )   
+                                              
                      )
                     }
 
                 </div>
-            </div>                  
+            </div>  
+            </div>                
         )}         
            
 };

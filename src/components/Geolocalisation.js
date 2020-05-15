@@ -29,7 +29,6 @@ class Geolocalisation extends React.Component {
     const callback = (position) => {
       var lat = position.coords.latitude;
       var lng = position.coords.longitude;
-      console.log(lat, lng);
       this.setState({ longitude: lng, latitude: lat, loaded: true });
       this.props.handleCoordDepart(lng,lat);
       
@@ -42,8 +41,6 @@ class Geolocalisation extends React.Component {
 
   componentDidMount() {
     this.getGeolocalisation();
-    
-    // handleCoordDepart()
   }
 
   render() {

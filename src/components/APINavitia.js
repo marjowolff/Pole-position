@@ -18,7 +18,6 @@ class NavitiaAdresse extends React.Component {
     fetch(url)
       .then((res) => res.json())
       .then((res) => this.setState({ transports: res, isloaded: true }))
-      .then((res) => console.log(this.state.transports))
       .then((res) => {
         this.setState({
           duration: Math.round(this.state.transports.journeys[0].duration / 60),
@@ -43,17 +42,7 @@ class NavitiaAdresse extends React.Component {
               Votre Adresse géolocalisée :{" "}
               {this.state.transports.journeys[0].sections[0].from.address.label}
             </p>
-           /* { <p>
-              {" "}
-              Votre Adresse d'arrivée :{" "}
-              {
-                this.state.transports.journeys[0].sections[
-                  this.state.transports.journeys[0].sections.length - 1
-                ].to.address.label
-              }
-            </p>
-            <p> Temps de transport : {this.state.duration} minutes </p> }*/
-
+         
         )}
       </div>
     );

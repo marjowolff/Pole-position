@@ -11,7 +11,7 @@ class App extends React.Component {
 
   render() {
     return (
-          <div>
+          <div className="background">
           <Navigation />
           <Switch>
             <Route exact path="/" component={Recherche}/>
