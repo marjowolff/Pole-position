@@ -4,7 +4,7 @@ import './Faq.css'
 
 class Faq extends Component {
   render() {
-    return <div className='ImgQuest'>
+    return <div>
       <header>
         <h1 className="FaqTitle">F.A.Q</h1>
       </header>
