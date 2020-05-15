@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Faq.css'
-import faqImg from './Images/faqImg'
+
 
 class Faq extends Component {
   render() {
@@ -9,7 +9,7 @@ class Faq extends Component {
         <h1 className="FaqTitle">F.A.Q</h1>
       </header>
 <div> 
-  <img src={faqImg} atl="Logo faq" className="FaqImg"/>
+  <img src="https://zupimages.net/up/20/20/33vl.png" atl="Logo faq" className="FaqImg"/>
 </div>
 
     </div>
