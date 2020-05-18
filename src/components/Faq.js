@@ -32,6 +32,15 @@ const data = {
   ],
 };
 
+const styles = {
+  // bgColor: 'white',
+  titleTextColor: "#6497b8",
+  rowTitleColor: "#6497b8",
+  // rowContentColor: 'grey',
+  // arrowColor: "red",
+  
+};
+
 class FAQ extends Component {
   render() {
     return <div>
@@ -40,7 +49,7 @@ class FAQ extends Component {
       <div className="container">
         <img src="https://zupimages.net/up/20/20/33vl.png" atl="Logo faq" className="FaqImg" />
         <div className="questions">
-        <Faq data={data}/>
+        <Faq data={data} styles={styles}/>
         </div>
       </div>
 
