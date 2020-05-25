@@ -6,3 +6,39 @@
     color:  #6497b8;
 }
 
+.container{
+    display: flex;
+    flex-direction: row;
+    margin : 50px auto;
+}
+.FaqImg{
+    height: 350px;
+
+}
+.questions{
+    margin : 20px 50px;
+    width: 100%;
+    text-align: justify;
+    background-color: white;
+    padding : 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius:6px;
+}
+
+
+@media screen and (max-width: 1050px){
+    .container{
+        display: flex;
+        flex-direction: column;
+        margin : 20px 0 0 0;
+    }
+    .FaqImg{
+        height: 200px;
+        width: 300px;
+        margin: 0 auto;
+    }
+    .questions{
+        margin : 20px auto;
+        width: 100%;
+    }
+}
