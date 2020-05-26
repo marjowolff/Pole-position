@@ -19,8 +19,8 @@ const Burger = () => {
                     </div>
                     <div className="Links">
                         <ul>
-                        <li className="Li"><Link to="/" className="Path">Recherche</Link></li>
-                        <li className="Li"><Link to="/faq" className="Path">F.A.Q</Link></li>
+                        <li className="Li"><Link to="/" className="Path" onClick={() => setStatus(status === 'open' ? 'close' : 'open')}>Recherche</Link></li>
+                        <li className="Li"><Link to="/faq" className="Path" onClick={() => setStatus(status === 'open' ? 'close' : 'open')}>F.A.Q</Link></li>
                         </ul>
                     </div>
                 </nav>
