@@ -4,7 +4,6 @@ import './Faq.css'
 
 
 const data = {
-  title: "FAQ (How it works)",
   rows: [
       {
           title: "Quelles sont les offres d'emplois recensées dans l'application ?",
@@ -20,6 +19,10 @@ const data = {
           content: `Nous avons pris le parti de calculer des temps de transport en heure de pointe. Nous calculons donc le temps de trajet le lundi suivant à 18h. `,
       },
       {
+        title: "Quels langages et technologies ont été utilisés pour créer cette application ?",
+        content: `Cette application a été codée en Javascript avec la bibliothèque React et nous avons ajouté du CSS pour le style.`,
+      },
+      {
           title: "Qui sommes-nous ?",
           content: "Nous sommes 3 étudiants de la Wild Code School et cette application a été réalisée dans le cadre d'un de nos projets pédagogiques. Nous sommes Céline Cottier (https://www.linkedin.com/in/c%C3%A9line-cottier-0847118a/), Florent Voinot (https://www.linkedin.com/in/florentvoinot/) et Marjolaine Baratte (https://www.linkedin.com/in/marjolainebaratte/)",
       },
@@ -27,12 +30,8 @@ const data = {
 };
 
 const styles = {
-  // bgColor: 'white',
   titleTextColor: "#6497b8",
   rowTitleColor: "#6497b8",
-  // rowContentColor: 'grey',
-  // arrowColor: "red",
-  
 };
 
 class FAQ extends Component {
@@ -41,7 +40,7 @@ class FAQ extends Component {
       <h1 className="FaqTitle">F.A.Q</h1>
      
       <div className="container">
-        <img src="https://zupimages.net/up/20/20/33vl.png" atl="Logo faq" className="FaqImg" />
+        <img src="https://zupimages.net/up/20/20/33vl.png" alt="Logo faq" className="FaqImg" />
         <div className="questions">
         <Faq data={data} styles={styles}/>
         </div>
