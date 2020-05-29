@@ -1,0 +1,160 @@
+@font-face{
+    font-family : "Cereal";
+    src : url('./AirbnbCerealMedium.woff');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family : "Cereal", Helvetica, Arial, sans-serif;
+  }
+
+.card {
+    margin: 20px 10px;
+    padding:10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: stretch;
+    align-content: flex-start;
+    border-radius:6px;
+    background-color: white;
+}
+
+
+#FaBus {
+    align-self:center;
+    margin-top:10px;
+    
+}
+
+.inf30{
+    color : #19b001;
+}
+
+.inf60{
+    color :#fc9902 ; 
+}
+.sup60{
+    color :#FC0202;
+}
+
+h2 {
+    color:#6497B8;
+    padding:7px;
+    font-size:18px;
+}
+.cardTitle{
+    text-align: center;
+}
+p {
+    font-size:15px;
+}
+
+.cardSeparator {
+    display:flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.companyEtContrat{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.company{
+    width : 70%;
+    padding : 10px;
+}
+
+.city{
+    padding-left : 10px ;
+}
+.contrat {
+    width: 30%;
+    text-align: right;
+    padding :10px 10px 0 0; 
+}
+
+.cardButton {
+    background-color: #6497B8;
+    color:white;
+    border-radius:6px;
+    margin: 7px auto;
+    padding:5px;
+    font-size:15px;
+}
+.noOffer{
+    width: 98%;
+    margin : 50px auto;
+    padding : 30px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius:6px;
+}
+
+@media screen and (min-width: 800px) {
+    .card{
+        margin : 20px 250px;
+    }
+    .cardSeparator{
+        flex-direction: row ;
+        justify-content: space-between ;
+    }
+    .companyEtContrat{
+        flex-direction: row ;
+        justify-content: flex-start ;
+    }
+    .company{
+        width: auto;
+        padding: 10px;
+    }
+    .contrat{
+        width: auto;
+        padding: 10px;
+    }
+    .city{
+        padding : 10px;
+        flex-grow: 1;
+        text-align:right ;
+    }
+    #FaBus{
+        padding : 10px;
+        margin-top :0px;
+    }
+    .background{
+        background-image: url("Images/backgroundIcones5.png"); 
+        min-height: 100vh;   
+    }
+   .results{
+       min-height: 100vh;
+   }
+    .background2{
+        min-height: 100vh;
+    }
+    
+   .divPageRecherche{
+        background-color: white;
+        width: 70%;
+        margin : auto;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    }
+    .noOffer{
+        width: 70%;
+        margin : 50px auto;
+        padding : 30px;
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    }
+   
+  }
+
+  @media screen and (min-width: 800px)and (max-width: 1100px){
+    .card{
+        margin : 20px 100px;
+    }
+  }

@@ -1,0 +1,9 @@
+.Logo {
+  height: 100%;
+  width: 100%;
+}
+
+.Logo img {
+  margin-top: 4px;
+  margin-left: 15px;
+}
